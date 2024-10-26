@@ -6,6 +6,9 @@ Co-worker : 박현준, 임도현
 
 > 최신 Computer Vision 기술인 3D Gaussian Splatter를 이용하여 서로 다른 배경에 존재하고 있는 Object들을 3DGS로 렌더링한 뒤 이들의 Point Cloud들을 합성해서 3D Space에 Reconstruct 하는 프로젝트입니다.
 
+- Environment Setting : [EnvSetting.md](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/Env_Setting.md)
+- Implementation detail : [Implement.md](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/Implement.md)
+
 ## Point Cloud
 |Wide-view|Front|Rear|
 |:--:|:--:|:--:|
