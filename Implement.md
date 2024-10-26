@@ -4,7 +4,7 @@
 
 ## COLMAP
 
-![colmap_impl](https://github.com/user-attachments/assets/3ff5ada5-af43-4141-8571-63d6735b69b0)
+![colmap_impl](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/colmap_impl.png)
 COLMAP 실행 후 노란색 형광펜으로 칠한 부분 (Automatic Reconstruction)을 클릭하면 위와 같은 화면이 나옵니다.
 
 그 뒤, ```Workspace folder```에는 COLMAP을 돌린 뒤 결과물이 저장될 폴더의 경로를 입력하고, ```Image folder```에는 COLMAP에 넣을 input image들이 들어 있는 폴더의 경로를 입력합니다.
@@ -19,14 +19,14 @@ python image_resize.py
 
 다 끝나면 아까 지정했던 ```Workspace folder```에 결과물들이 저장 됩니다.
 
-![colmap_output](https://github.com/user-attachments/assets/9bdb6a1b-47e0-45ce-b407-f351c843a957)
+![colmap_output](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/colmap_output.png)
 
 > 한가지 더 중요한 내용은, 3DGS를 돌릴 때 ```SIMPLE PINHOLE``` 또는 ```PINHOLE``` 카메라로 세팅을 해주어야하는데, 이 과정은 다음과 같습니다.
 > 
 >1. File - New project - [database, images] 입력
 >2. Processing - Feature Extraction에서 ```SIMPLE PINHOLE``` 옵션을 선택하고 Extract를 클릭합니다. 제대로 바꼈는지 확인하고 싶다면 Processing - database management에 들어가서 카메라 옵션이 ```SIMPLE PINHOLE```로 바꼈는지 확인하면 됩니다.
 > 
-> ![pinhole](https://github.com/hjpark83/Capstone-SW-Project/blob/main/explain_images/pinhole.png)
+> ![pinhole](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/pinhole.png)
 >
 >3. Auto reconstruction을 클릭한 뒤 ```database``` 파일 경로와 ```images``` 폴더 경로를 입력합니다.
 
@@ -62,7 +62,7 @@ bash script/prepare_pseudo_label.sh [폴더 이름] 1
 
 Segmentation을 해서 객체를 지정한 뒤 그 객체 또는 배경을 지워야 하는데, 위에서 ```prepare_pseudo_label.sh``` 파일로 segmentation 된 image들이 생성되었다면, 이 image들에서 원하는 객체에 대한 정보를 불러와야 합니다. 그러기 위해서 ```Output/Annotations``` 폴더에 들어가 보면 어두운 색깔들로 segmentation이 된 image들이 여러장 존재하는 것을 확인할 수 있습니다. 여러 장의 Annotated image들 중 임의로 하나를 다운로드 받아서 그림판으로 연 뒤, 스포이드 모양으로 원하는 위치를 찍어서 색깔 정보를 보게 되면 아래의 그림처럼 RGB 값이 모두 동일한 정수값으로 주어져 있는 것을 확인할 수 있습니다.
 
-![index](https://github.com/hjpark83/Capstone-SW-Project/blob/main/explain_images/index.png)
+![index](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/index.png)
 
 이 값이 곧 segmentation을 했을 때 객체가 갖고 있는 index가 됩니다. 이 때 하나의 이미지에서 객체가 갖고 있는 index 값은 여러 개 일 수도 있기 때문에 모든 index 값을 찾아서 입력으로 넣어주어야 합니다.
 
@@ -84,7 +84,7 @@ bash script/edit_object_removal.sh output/bear config/object_removal/[json파일
 
 |Before|After|
 |:--:|:--:|
-|![before](https://github.com/hjpark83/Capstone-SW-Project/blob/main/explain_images/before.jpg)|![after](https://github.com/hjpark83/Capstone-SW-Project/blob/main/explain_images/after.jpg)|
+|![before](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/before.jpg)|![after](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/after.jpg)|
 
 
 ### Training
@@ -120,7 +120,7 @@ Segmentation과 Training까지 끝나게 되면 output 폴더 아래에 다음�
 
 생성된 image들의 결과를 확인하기 위해 나머지 다섯 개의 image를 하나로 합쳐 놓은 concat image를 보면 ```gt - renders - gt_objects_color - objects_pred - object_features16``` 순서로 image가 생성되어 있어서 output들을 한 번에 확인할 수 있습니다.
 
-![concat](https://github.com/hjpark83/Capstone-SW-Project/blob/main/explain_images/concat.jpg)
+![concat](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/concat.jpg)
 
 이 과정이 끝났다면 둘 중 하나의 과정으로 넘어가면 됩니다.
 
@@ -134,11 +134,11 @@ Segmentation과 Training까지 끝나게 되면 output 폴더 아래에 다음�
 
 한 가지 예시로, 한양대 본관 앞 사자상 위치에 광화문에 있는 세종대왕 동상을 갖다 놓고 싶다면, 한양대를 배경으로 하는 point cloud 파일을 로드한 뒤, 세종대왕 동상의 배경을 제거한 point cloud 파일을 가져와서 위치를 조정하면 됩니다.
 
-![synthesize](https://github.com/hjpark83/Capstone-SW-Project/blob/main/explain_images/cloudcpr.png)
+![synthesize](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/cloudcpr.png)
 
 그 다음으로 point cloud를 조작한 객체의 정보를 클릭한 뒤, property 창에서 제일 아래로 내려가면 어떤 행렬이 생성되게 됩니다.
 
-![matrix](https://github.com/hjpark83/Capstone-SW-Project/blob/main/explain_images/image.png)
+![matrix](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/image.png)
 
 4x4 행렬이고, 1행1열부터 3행3열까지는 rotation, 4열은 translation에 대한 정보를 갖고 있습니다. 즉, 해당 객체를 초기 위치에서 얼마만큼 움직였는지에 대한 정보를 나타냅니다.
 
