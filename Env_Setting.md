@@ -18,15 +18,15 @@ CloudCompare 프로그램을 설치해서 object를 옮길 배경, 옮기고 싶
 
 COLMAP의 경우 [Github](https://github.com/colmap/colmap/releases)에 들어가서 중간쯤에 Assets 부분에 있는 zip 파일을 cuda 유/무에 따라 설치를 하면 됩니다.
 
-![down_colmap](image.png)
+![down_colmap](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/down_colmap.png)
 
 설치를 하고 압축을 해제 하면 아래 image 같이 구성이 되어 있는 것을 확인할 수 있는데, 여기서 ```COLMAP``` 파일을 실행하면 COLMAP이 실행됩니다.
 
-![colmap](https://github.com/user-attachments/assets/da8d3897-d545-49eb-9bb7-afcd21645377)
+![colmap](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/colmap.png)
 
 ### 실행 화면
 
-![colmap_exe](https://github.com/user-attachments/assets/a86c0c54-a3d7-4690-8804-a82e0f758ac4)
+![colmap_exe](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/colmap_exe.png)
 
 ## Gaussian Grouping
 
@@ -68,7 +68,7 @@ Gaussian Splatting을 돌린 뒤 결과물을 육안으로 확인하기 위해�
 
 install을 클릭하면 zip 파일이 설치가 됩니다. 그 뒤 원하는 위치에 압축 해제를 하면 됩니다.
 
-![viewer](https://github.com/user-attachments/assets/cbf1ea5e-bcf3-4a74-8251-4252b371c64c)
+![viewer](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/viewer.png)
 
 압축 해제를 하게 되면 위의 그림과 같이 나오게 되고, bin 폴더에 들어가면 여러 파일들이 존재합니다. 이렇게 되면 viewer 실행 준비는 모두 끝나게 됩니다.
 
@@ -91,7 +91,7 @@ SIBR_gaussianViewer_app -m <output 경로>
 
 그래서 만약 3DGS를 돌린 사과를 불러오고 싶다면 output 경로에 apple 폴더까지의 경로를 입력하면 됩니다.
 
-![output_dir](https://github.com/user-attachments/assets/ce224cc6-0937-4364-afe2-009bf551d151)
+![output_dir](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/output_dir.png)
 
 3DGS output 폴더 내부를 보면 위의 그림과 같이 되어 있는데, 여기서 viewer를 통해 보기 위해서 **반드시** 필요한 파일의 경우 ```point_cloud```, ```cameras.json```, ```cfg_args``` 파일입니다. 이 파일들이 없으면 viewer로 볼 수가 없습니다.
 
