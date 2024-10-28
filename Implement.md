@@ -168,4 +168,4 @@ save_transform = transform.cpu().numpy()
 
 예시로, 한양대 사자상 앞에 광화문 세종대왕 동상 앞에 있는 혼천의 동상을 가져다 놓으면 아래와 같이 rendering이 됩니다.
 
-![final](https://github.com/hjpark83/Capstone-SW-Project/blob/main/explain_images/final.png)
+![final](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/final.png)
