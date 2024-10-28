@@ -9,7 +9,14 @@ Co-worker : 박현준, 임도현
 - Environment Setting : [EnvSetting.md](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/Env_Setting.md)
 - Implementation detail : [Implement.md](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/Implement.md)
 
+## COLMAP
+
+|한양대학교|혼천의|세종대왕|
+|:--:|:--:|:--:|
+|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/result_images/COLMAP/hanyang.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/result_images/COLMAP/clock.jpg)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/result_images/COLMAP/sejong.jpg)|
+
 ## Point Cloud
+
 |Wide-view|Front|Rear|
 |:--:|:--:|:--:|
 |![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/result_images/pointcloud1.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/result_images/pointcloud2.jpg)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/result_images/pointcloud3.jpg)|
