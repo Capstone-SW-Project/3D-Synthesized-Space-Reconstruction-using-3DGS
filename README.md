@@ -13,6 +13,7 @@ Co-worker : 박현준, 임도현
 
 |한양대학교|혼천의|세종대왕|
 |:--:|:--:|:--:|
+|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/result_images/COLMAP/hanyang.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/result_images/COLMAP/clock.jpg)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/result_images/COLMAP/sejong.jpg)|
 
 
 ## Point Cloud
