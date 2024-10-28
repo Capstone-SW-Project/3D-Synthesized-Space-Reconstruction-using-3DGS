@@ -68,7 +68,7 @@ Gaussian Splatting을 돌린 뒤 결과물을 육안으로 확인하기 위해�
 
 install을 클릭하면 zip 파일이 설치가 됩니다. 그 뒤 원하는 위치에 압축 해제를 하면 됩니다.
 
-![viewer](https://github.com/user-attachments/assets/cbf1ea5e-bcf3-4a74-8251-4252b371c64c)
+![viewer](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/viewer.png)
 
 압축 해제를 하게 되면 위의 그림과 같이 나오게 되고, bin 폴더에 들어가면 여러 파일들이 존재합니다. 이렇게 되면 viewer 실행 준비는 모두 끝나게 됩니다.
 
