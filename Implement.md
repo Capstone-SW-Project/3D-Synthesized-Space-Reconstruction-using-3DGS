@@ -134,6 +134,8 @@ Segmentation과 Training까지 끝나게 되면 output 폴더 아래에 다음�
 
 한 가지 예시로, 한양대 본관 앞 사자상 위치에 광화문에 있는 세종대왕 동상을 갖다 놓고 싶다면, 한양대를 배경으로 하는 point cloud 파일을 로드한 뒤, 세종대왕 동상의 배경을 제거한 point cloud 파일을 가져와서 위치를 조정하면 됩니다.
 
+>아래의 그림에서 노란색/초록색으로 표현된 point들이 한양대, 빨간색으로 표현된 point들이 세종대왕 동상에 대한 point cloud 입니다.
+
 ![synthesize](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/explain_images/cloudcpr.png)
 
 그 다음으로 point cloud를 조작한 객체의 정보를 클릭한 뒤, property 창에서 제일 아래로 내려가면 어떤 행렬이 생성되게 됩니다.
