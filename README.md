@@ -75,7 +75,7 @@ Co-worker : 박현준, 임도현
 ---
 
 ##### 3D Gaussian Splatting Process Overview
-![3GDs_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/methodology_images/3gds_process.png)
+![3GDs_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/methodology/3gds_process.png)
 
 ##### 1. Initialization
 ![3GDs_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/LaTeX/3gds/Initialization.png)
