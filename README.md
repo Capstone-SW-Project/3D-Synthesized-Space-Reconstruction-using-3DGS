@@ -39,34 +39,34 @@ Co-worker : 박현준, 임도현
 ##### 1) Correspondence Search (대응점 검색)
 
 ###### 1-1) Feature Extraction (특징점 추출)
-![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/colmap/FeatureExtraction.png)
+![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/LaTeX/colmap/FeatureExtraction.png)
 
 ###### 1-2) Feature Matching (특징점 매칭)
-![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/colmap/FeatureMatching.png)
+![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/LaTeX/colmap/FeatureMatching.png)
 
 ###### 1-3) Geometric Verification (기하학적 검증)
-![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/colmap/GeometricVerification.png)
+![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/LaTeX/colmap/GeometricVerification.png)
 
 
 ##### 2) Incremental Reconstruction (점진적 재구성)
 
 ###### 2-1) Initialization (초기화)
-![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/colmap/Initialization.png)
+![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/LaTeX/colmap/Initialization.png)
 
 
 ###### 2-2) Image Registration (이미지 등록)
 ![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/colmap/ImageRegistration.png)
 
 ###### 2-3) Triangulation (삼각측량)
-![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/colmap/Triangulation.png)
+![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/LaTeX/colmap/Triangulation.png)
 
 
 ###### 2-4) Bundle Adjustment (번들 조정)
-![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/colmap/BA.png)
+![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/LaTeX/colmap/BA.png)
 
 
 ###### 2-5) Outlier Filtering (이상치 제거)
-![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/colmap/OutlierFiltering.png)
+![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/LaTeX/colmap/OutlierFiltering.png)
 
 
 ##### Reconstruction (재구성 결과)
