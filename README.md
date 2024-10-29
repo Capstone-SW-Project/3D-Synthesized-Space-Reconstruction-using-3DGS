@@ -34,24 +34,32 @@ Co-worker : 박현준, 임도현
 ![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/methodology_images/colmap_process.png)
 
 ##### Images
-- 여러장의 이미지 입력
+- 여러 이미지 입력
+
+---
 
 ##### 1) Correspondence Search (대응점 검색)
 
 ###### 1-1) Feature Extraction (특징점 추출)
-- **Input**: 이미지 집합 \( I = \{ I_i | i = 1, \dots, N_1 \} \)
+- **Input**: 이미지 집합 $ I = \{ I_i \mid i = 1, \dots, N_1 \} $
 - **Process**: SIFT 기법을 이용하여 각 이미지에서 특징점 추출
-- **Output**: 각 이미지에 대한 로컬 특징 \( F_i = \{ (X_j, f_j) | j = 1, \dots, N_{F_i} \} \), 여기서 \( X_j \)는 2차원 위치
+- **Output**: 각 이미지에 대한 로컬 특징 $ F_i = \{ (X_j, f_j) \mid j = 1, \dots, N_{F_i} \} $, 여기서 $ X_j $는 2차원 위치
+
+---
 
 ###### 1-2) Feature Matching (특징점 매칭)
-- **Input**: 추출된 특징점 집합 \( F_i \)
+- **Input**: 추출된 특징점 집합 $ F_i $
 - **Process**: 추출한 특징점을 바탕으로 각 이미지 쌍에서 같은 장면 부분을 찾아서 잠재적으로 겹치는 이미지 쌍을 매칭
-- **Output**: 잠재적으로 겹치는 이미지 쌍 집합 \( C = \{ \{ I_a, I_b \} | I_a, I_b \in I, a < b \} \)
+- **Output**: 잠재적으로 겹치는 이미지 쌍 집합 $ C = \{ \{ I_a, I_b \} \mid I_a, I_b \in I, a < b \} $
+
+---
 
 ###### 1-3) Geometric Verification (기하학적 검증)
-- **Input**: 매칭된 이미지 쌍 집합 \( C \)
+- **Input**: 매칭된 이미지 쌍 집합 $ C $
 - **Process**: 기하학적 검증을 통해 Inlier 대응점 및 이미지 쌍 간의 기하학적 관계를 확인
-- **Output**: 기하학적으로 검증된 이미지 쌍 \( C^ \), Inlier 대응점 \( M^_{ab} \), 이미지 쌍 간의 기하학적 관계 \( G_{ab} \)
+- **Output**: 기하학적으로 검증된 이미지 쌍 $ C^{\wedge} $, Inlier 대응점 $ M^{\wedge}_{ab} $, 이미지 쌍 간의 기하학적 관계 $ G_{ab} $
+
+---
 
 ##### 2) Incremental Reconstruction (점진적 재구성)
 
@@ -60,25 +68,35 @@ Co-worker : 박현준, 임도현
 - **Process**: 초기 이미지 두 개를 선택하여 초기화 (겹치는 영역이 많은 이미지나 드문드문 겹치는 이미지를 선택)
 - **Output**: 초기화된 이미지 쌍 및 관련 카메라 포즈
 
+---
+
 ###### 2-2) Image Registration (이미지 등록)
 - **Input**: 초기화된 이미지 쌍
 - **Process**: 새로운 이미지를 추가하면서, 해당 이미지의 포즈(위치 및 방향)를 추정
 - **Output**: 등록된 이미지와 카메라 포즈
+
+---
 
 ###### 2-3) Triangulation (삼각측량)
 - **Input**: 등록된 이미지와 카메라 포즈
 - **Process**: 여러 이미지에서 공통으로 관측된 특징점들을 이용해 3D 위치를 추정하여 포인트 클라우드를 생성
 - **Output**: 포인트 클라우드 (초기 구조)
 
+---
+
 ###### 2-4) Bundle Adjustment (번들 조정)
 - **Input**: 등록된 카메라 포즈와 포인트 클라우드
-- **Process**: 카메라 파라미터 \( P \)와 포인트 \( X \)를 최적화하여 reprojection error를 최소화
-- **Output**: 카메라 포즈 추정 \( P = \{ P_c | c = 1, \dots, N_p \} \)와 3D 포인트 구조 \( X = \{ X_k | k = 1, \dots, N_x \} \)
+- **Process**: 카메라 파라미터 $ P $와 포인트 $ X $를 최적화하여 reprojection error를 최소화
+- **Output**: 카메라 포즈 추정 $ P = \{ P_c \mid c = 1, \dots, N_p \} $와 3D 포인트 구조 $ X = \{ X_k \mid k = 1, \dots, N_x \} $
+
+---
 
 ###### 2-5) Outlier Filtering (이상치 제거)
 - **Input**: 번들 조정 후 포인트 클라우드
 - **Process**: 잘못된 매칭이나 노이즈로 인해 발생한 Outliers를 제거하여 구조를 정제
 - **Output**: Outliers가 제거된 정제된 포인트 클라우드
+
+---
 
 ##### Reconstruction (재구성 결과)
 - 최종적으로 3D 구조를 재구성하여 포인트 클라우드를 얻는다.
