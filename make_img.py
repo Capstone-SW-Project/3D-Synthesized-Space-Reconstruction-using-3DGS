@@ -6,7 +6,7 @@ import os
 # 비디오 파일 경로
 video_path = 'input_video.mp4'  
 folder_name = input("Enter the folder name: ")
-output_folder = 'output_frames/{folder_name}'
+output_folder = f'output_frames/{folder_name}'
 
 if not os.path.exists(output_folder):
     os.makedirs(output_folder)

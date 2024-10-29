@@ -235,6 +235,7 @@ xyz1, features_dc1, features_rest1, opacity1, scaling1, rotation1= load_ply("객
 # 배경의 point cloud
 xyz2, features_dc2, features_rest2, opacity2, scaling2, rotation2= load_ply("배경 point cloud 경로")
 
+# 객체 주변의 미세한 noise를 제거하려면 1, 아니면 0
 filtering =1
 if filtering:
     idx = torch.where(opacity1>opacity1.mean())[0]
@@ -254,9 +255,9 @@ savepath = "파일 저장 경로"
 scaling_inverse_activation = torch.log
 # CloudCompare에서 가져온 transform matrix 입력
 transform = torch.tensor(
-    [[3.019781112670898438e+00, -3.587610125541687012e-01, -8.214100003242492676e-01, 1.763316988945007324e+00],
-     [6.581500172615051270e-02, 2.967633008956909180e+00, -1.054191946983337402e+00, -4.449329972267150879e-01],
-     [8.939189910888671875e-01, 9.934499859809875488e-01, 2.852448940277099609e+00, 3.088181972503662109e+00],
+    [[1.000000, 0.000000, 0.000000, 0.000000],
+     [0.000000, 1.000000, 0.000000, 0.000000],
+     [0.000000, 0.000000, 1.000000, 0.000000],
      [0.000000, 0.000000, 0.000000, 1.000000]], device="cuda")
 save_transform = transform.cpu().numpy()
 
