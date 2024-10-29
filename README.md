@@ -86,7 +86,7 @@ Co-worker : 박현준, 임도현
 
 
 ##### 3. Differentiable Tile Rasterizer
-![3GDs_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/LaTeX/3gds/Differentiable Tile Rasterizer.png)
+![3GDs_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/LaTeX/3gds/DifferentiableTileRasterizer.png)
 
 
 ##### 4. Gradient Flow
