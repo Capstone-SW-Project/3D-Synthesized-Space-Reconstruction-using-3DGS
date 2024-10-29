@@ -55,7 +55,7 @@ Co-worker : 박현준, 임도현
 
 
 ###### 2-2) Image Registration (이미지 등록)
-![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/colmap/ImageRegistration.png)
+![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/LaTeX/colmap/ImageRegistration.png)
 
 ###### 2-3) Triangulation (삼각측량)
 ![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/LaTeX/colmap/Triangulation.png)
