@@ -18,7 +18,7 @@ Co-worker : 박현준, 임도현
 ---
 
 ## 1. Objective
-> 최신 Computer Vision 기술인 3D Gaussian Splatter를 이용하여 서로 다른 배경에 존재하고 있는 Object들을 3DGS로 렌더링한 뒤 이들의 Point Cloud들을 합성해서 3D Space에 Reconstruct 하는 프로젝트입니다.
+최신 Computer Vision 기술인 3D Gaussian Splatting을 이용하여 서로 다른 배경에 존재하고 있는 Object들을 3DGS로 렌더링한 뒤 이들의 Point Cloud들을 합성해서 3D Space에 Reconstruct 하는 프로젝트입니다.
 
 ---
 
