@@ -171,6 +171,6 @@ Co-worker : 박현준, 임도현
 ## 6.Conclusion
 
 ## 7.References
-> Schonberger, Johannes L., and Jan-Michael Frahm. "Structure-from-motion revisited." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.
-> Kerbl, Bernhard, et al. "3D Gaussian Splatting for Real-Time Radiance Field Rendering." ACM Trans. Graph. 42.4 (2023): 139-1.
->Ye, Mingqiao, et al. "Gaussian grouping: Segment and edit anything in 3d scenes." arXiv preprint arXiv:2312.00732 (2023).
+1. Schonberger, Johannes L., and Jan-Michael Frahm. "Structure-from-motion revisited." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.
+2. Kerbl, Bernhard, et al. "3D Gaussian Splatting for Real-Time Radiance Field Rendering." ACM Trans. Graph. 42.4 (2023): 139-1.
+3. Ye, Mingqiao, et al. "Gaussian grouping: Segment and edit anything in 3d scenes." arXiv preprint arXiv:2312.00732 (2023).
