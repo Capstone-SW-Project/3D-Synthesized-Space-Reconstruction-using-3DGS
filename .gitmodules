@@ -1,0 +1,4 @@
+[submodule "Gaussian-Grouping"]
+	path = Gaussian-Grouping
+	url = https://github.com/lkeab/gaussian-grouping.git
+	branch = main
