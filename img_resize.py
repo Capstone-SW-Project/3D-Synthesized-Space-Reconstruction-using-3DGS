@@ -1,12 +1,12 @@
 # 이미지 크기가 너무 클 경우 COLMAP을 돌릴 때 시간이 오래 걸리기 때문에
-# 1000x1000으로 resize해 주는 것이 좋다.
+# 크기를 조정해 주는 것이 좋다.
 
 import cv2
 import glob
 import os
 
-imgpath = 'C:/Users/CV/Desktop/3DGS/south-building/images'
-savepath = 'C:/Users/CV/Desktop/3DGS/south-building/resized_images'
+imgpath = '이미지 폴더 경로'
+savepath = '저장할 폴더 경로'
 
 if not os.path.exists(savepath):
     os.makedirs(savepath)
