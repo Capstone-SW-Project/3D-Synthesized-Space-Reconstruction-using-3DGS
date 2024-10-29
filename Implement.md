@@ -165,6 +165,21 @@ transform = torch.tensor(
      [0.000000, 0.000000, 0.000000, 1.000000]], device="cuda")
 save_transform = transform.cpu().numpy()
 ```
+여기까지 한 뒤 실행을 하면 됩니다. 다만, ```composition_ply.py``` 파일은 GPU를 사용하기 때문에 Gaussian Grouping과 같은 디렉토리에 위치시켜서 Gaussian Grouping을 실행할 때 사용한 conda 가상환경으로 실행을 하거나, GPU가 있는 PC라면 conda 가상환경을 이용하여 실행을 하면 됩니다.
+
+```bash
+# Gaussian Grouping 가상환경 설정과 동일
+conda create -n GG python=3.8 -y
+conda activate GG 
+
+conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
+pip install plyfile==0.8.1
+pip install tqdm scipy wandb opencv-python scikit-learn lpips
+
+# 파일 실행
+cd <dir_path>
+python composition_ply.py
+```
 
 새롭게 만들어진 point cloud 파일을 복사한 뒤, 배경 또는 객체의 ```cameras.json```, ```cfg_args``` 파일과 같은 폴더에 point_cloud 폴더를 생성하여 그 안에 붙여넣기를 한 뒤 동일한 방식으로 viewer를 통해 결과를 확인하면 됩니다.
 
