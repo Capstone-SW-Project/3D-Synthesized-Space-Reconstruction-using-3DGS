@@ -23,8 +23,12 @@ Co-worker : 박현준, 임도현
 ## 3. Methodology
 
 #### COLMAP 3D Reconstruction Process
+![COLMAP_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/methodology_images/colmap_process.png)
+
+---
+
 ##### Images
-- 여러 이미지 입력
+- 여러장의 이미지 입력
 
 ---
 
@@ -92,6 +96,7 @@ Co-worker : 박현준, 임도현
 - 최종적으로 3D 구조를 재구성하여 포인트 클라우드를 얻는다.
 
 ##### 3D Gaussian Splatting Process Overview
+![3GDs_PROCESS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/methodology_images/3gds_process.png)
 
 ---
 
