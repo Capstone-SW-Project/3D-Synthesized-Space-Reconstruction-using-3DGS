@@ -100,6 +100,69 @@ Co-worker : 박현준, 임도현
 ##### Summary
 - 이 과정은 COLMAP으로부터 얻은 초기 3D 정보를 바탕으로 3D Gaussian을 학습하고, GT 이미지와 비교하여 최적화하는 과정입니다. 최종적으로 Loss에 따른 Gradient가 각 단계로 전파되면서 Gaussian 분포가 GT에 가깝게 조정됩니다.
 ---
+#### Gaussian Grouping Process
+
+##### 1. 2D Image and Mask Input
+
+- **Input**: 다중 시점 2D 이미지 (Ground Truth 이미지)
+- **SAM**:
+  - **Input**: 다중 시점 2D 이미지
+  - **Output**: 2D 마스크 (m)
+
+##### 2. Identity Consistency across Views
+
+- **Zero-shot Tracker**: 시점 간 아이덴티티 일관성을 유지하기 위해 마스크 연관(Mask Association)을 수행합니다.
+  - **Input**: SAM에서 생성한 2D 마스크 (m)와 카메라 포즈
+  - **Output**: 3D 객체 아이덴티티 마스크 (\( \hat{M} \))
+
+##### 3. 3D Gaussian Rendering and Grouping
+
+- **Identity Encoding**: 객체의 인스턴스 ID로 작용하여 각 3D 객체를 구분하는 데 사용됩니다.
+- **E_id**: 2D 이미지 평면의 각 픽셀에 대한 아이덴티티 특징으로, 해당 픽셀이 어떤 객체에 속하는지를 나타냅니다.
+
+1. **3D 공간에서 2D 이미지 평면으로의 투영**:
+   - 3D 공분산 행렬 (Sigma_3D)을 2D로 투영하여 다음과 같이 변환합니다:
+
+     Sigma_2D = J * W * Sigma_3D * W^T * J^T
+
+2. **2D 이미지에서 픽셀별 특징 계산**:
+   - 각 픽셀의 아이덴티티 특징 E_id는 다음과 같이 계산됩니다:
+
+     E_id = sum(i ∈ N) [ e_i * alpha'_i * product(j=1 to i-1) (1 - alpha'_j) ]
+
+   - 여기서:
+
+     alpha'_i(x) = exp(-0.5 * (x - mu_i)^T * (Sigma_2D)^-1 * (x - mu_i))
+
+   - **참고**: E_id는 2D 이미지의 각 픽셀에서 계산된 아이덴티티 특징으로, 픽셀이 어떤 객체에 속하는지를 나타냅니다.
+
+##### 4. Grouping Loss
+
+- **Input**: 2D 이미지 평면의 각 픽셀에 대한 아이덴티티 특징 E_id
+
+1. **2D Identity Loss (L_2D)**:
+   - E_id를 MLP에 통과시키고 SoftMax 연산을 적용하여 각 픽셀이 K개의 카테고리(객체 클래스) 중 하나에 속하도록 분류합니다.
+
+2. **3D Identity Loss (L_3D)**:
+   - KL Divergence를 사용하여 동일 객체에 속하는 가우시안들이 유사한 E_id 값을 가지도록 하여 아이덴티티 인코딩의 일관성을 유지합니다.
+   
+     L_3D = (1/m) * sum(j=1 to m) D_KL(P || Q) = (1/mk) * sum(j=1 to m) sum(i=1 to k) [ F(e_j) * log(F(e_j) / F(e_i')) ]
+
+3. **Final Loss (L_render)**:
+   - 재구성 손실과 아이덴티티 손실을 결합하여 최종 손실을 계산합니다:
+   
+     L_render = L_rec + L_id = L_rec + lambda_2d * L_2D + lambda_3d * L_3D
+
+
+##### Summary of Process
+- **다중 시점 2D 이미지**는 **SAM**을 통해 **2D 마스크**로 변환됩니다.
+- **Zero-shot Tracker**는 이러한 마스크와 카메라 포즈를 사용하여 시점 간에 일관된 **3D 객체 아이덴티티 마스크** (\( \hat{M} \))를 생성합니다.
+- **3D 가우시안 렌더링**을 수행하여 가우시안을 2D 공간으로 투영하고 각 픽셀의 아이덴티티 특징 (E_id)을 계산합니다.
+- **그룹핑 손실**을 적용하여 아이덴티티 일관성을 최적화하며, 2D 및 3D 아이덴티티 손실을 활용합니다.
+- **최종 렌더링 손실**은 재구성 손실과 아이덴티티 손실을 결합하여 3D 객체 그룹핑의 일관성을 보장합니다.
+
+---
+
 
 ## 4.Results
 ### COLMAP
