@@ -127,9 +127,9 @@ Co-worker : 박현준, 임도현
 
 ### GIF
 
-|한양대학교|혼천의|세종대왕|결과물|
-|:--:|:--:|:--:|:--:|
-|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/hanyang.gif)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/clock.gif)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/sejong.gif)|![4](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/synth_result.gif)|
+|원본|결과물|
+|:--:|:--:|
+|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/concat.gif)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/synth_result.gif)|
 
 ---
 
