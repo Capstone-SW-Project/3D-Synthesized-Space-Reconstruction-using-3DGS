@@ -39,10 +39,9 @@ Gaussian Grouping의 경우 논문의 저자가 Github에 적어 놓은 설명 �
 
 [출처 : Gaussian-Grouping (train.md)](https://github.com/lkeab/gaussian-grouping/blob/main/docs/train.md)
 
-```
-
 먼저 input 폴더를 생성한 뒤, 아래와 같이 input image의 경로를 설정합니다.
 
+```
 <location>
 |---input
     |---<image 0>
