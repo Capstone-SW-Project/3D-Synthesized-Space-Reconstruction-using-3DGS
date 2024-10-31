@@ -155,7 +155,7 @@ $$L = (1 - \lambda) L_1 + \lambda L_{D\text{-}SSIM}$$
 
 2. **3D Identity Loss (L_3D)**:
    - KL Divergence를 사용하여 동일 객체에 속하는 가우시안들이 유사한 E_id 값을 가지도록 하여 아이덴티티 인코딩의 일관성을 유지합니다.  
-    $${\mathcal{L}_{3d} = \frac{1}{m} \sum{j=1}^{m} D_{\text{KL}}(P \parallel Q) = \frac{1}{mk} \sum_{j=1}^{m} \sum_{i=1}^{k} F(e_j) \log \left( \frac{F(e_j)}{F(e_i')} \right)}$$
+    $$L_{3d} = \frac{1}{m} \sum{j=1}^{m} D_{\text{KL}}(P \parallel Q) = \frac{1}{mk} \sum_{j=1}^{m} \sum_{i=1}^{k} F(e_j) \log \left( \frac{F(e_j)}{F(e_i')} \right)$$
 
 3. **Final Loss (L_render)**:
    - 재구성 손실과 아이덴티티 손실을 결합하여 최종 손실을 계산합니다:  
