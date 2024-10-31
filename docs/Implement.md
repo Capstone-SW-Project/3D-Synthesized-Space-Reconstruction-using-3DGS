@@ -37,7 +37,7 @@ python image_resize.py
 
 Gaussian Grouping의 경우 논문의 저자가 Github에 적어 놓은 설명 그대로 진행을 하면 됩니다.
 
-[출처 : Gaussian-Grouping (train.md)](https://github.com/lkeab/gaussian-grouping/blob/main/docs/train.md?plain=1)
+[출처 : Gaussian-Grouping (train.md)](https://github.com/lkeab/gaussian-grouping/blob/main/docs/train.md)
 
 ```
 
