@@ -37,12 +37,11 @@ python image_resize.py
 
 Gaussian Grouping의 경우 논문의 저자가 Github에 적어 놓은 설명 그대로 진행을 하면 됩니다.
 
-[출처 : Gaussian-Grouping (train.md)](https://github.com/lkeab/gaussian-grouping/blob/main/docs/train.md?plain=1)
-
-```
+[출처 : Gaussian-Grouping (train.md)](https://github.com/lkeab/gaussian-grouping/blob/main/docs/train.md)
 
 먼저 input 폴더를 생성한 뒤, 아래와 같이 input image의 경로를 설정합니다.
 
+```
 <location>
 |---input
     |---<image 0>
@@ -56,7 +55,7 @@ SAM object mask로 전환을 합니다.
 bash script/prepare_pseudo_label.sh [폴더 이름] 1
 ```
 
-전환을 하는 이유는 원하는 객체만을 가져오기 위해서는 segmentation을 통해 원하는 객체를 제외한 나머지 배경 부분을 masking한 뒤, ```edit_object_removal.py``` 파일을 실행해서 원하는 객체 부분을 가져올 수 있기 때문입니다.
+전환을 하는 이유는 원하는 객체만을 가져오기 위해서는 segmentation을 통해 원하는 객체를 제외한 나머지 배경 부분을 masking한 뒤, ```edit_object_removal.py``` 또는 ```edit_background_removal.py``` 파일을 실행해서 원하는 객체 부분을 가져올 수 있기 때문입니다.
 
 ### Segmentation
 
@@ -81,7 +80,8 @@ Index 값들을 모두 찾았다면 그 값들을 Gaussian Grouping - config 폴
 마지막으로 아래의 파일을 실행시키면, 해당 index 부분을 제외한 나머지 부분들을 지워주게 됩니다.
 
 ```bash
-bash script/edit_object_removal.sh output/bear config/object_removal/[json파일 이름].json
+bash script/edit_object_removal.sh output/bear config/object_removal/[json파일 이름].json # 객체 제거
+bash script/edit_background_removal.sh output/bear config/object_removal/[json파일 이름].json # 배경 제거
 ```
 
 |Before|After|
@@ -142,7 +142,7 @@ Segmentation과 Training까지 끝나게 되면 output 폴더 아래에 다음�
 
 그 다음으로 point cloud를 조작한 객체의 정보를 클릭한 뒤, property 창에서 제일 아래로 내려가면 어떤 행렬이 생성되게 됩니다.
 
-![matrix](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/image.png)
+![matrix](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/matrix.png)
 
 4x4 행렬이고, 1행1열부터 3행3열까지는 rotation, 4열은 translation에 대한 정보를 갖고 있습니다. 즉, 해당 객체를 초기 위치에서 얼마만큼 움직였는지에 대한 정보를 나타냅니다.
 
