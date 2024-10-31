@@ -26,7 +26,7 @@
 ###### 1-3) Geometric Verification (기하학적 검증)
 - **Input**: 매칭된 이미지 쌍 집합 $$\( C \)$$
 - **Process**: 기하학적 검증을 통해 Inlier 대응점 및 이미지 쌍 간의 기하학적 관계를 확인
-- **Output**: 기하학적으로 검증된 이미지 쌍 $$ \( C^ \)$$, Inlier 대응점 $$\( M^_{ab} \)$$, 이미지 쌍 간의 기하학적 관계 $$\( G_{ab} \)$$
+- **Output**: 기하학적으로 검증된 이미지 쌍 $$\( C^ \)$$, Inlier 대응점 $$\( M^_{ab} \)$$, 이미지 쌍 간의 기하학적 관계 $$\( G_{ab} \)$$
 
 ---
 
@@ -55,7 +55,7 @@
 
 ###### 2-4) Bundle Adjustment (번들 조정)
 - **Input**: 등록된 카메라 포즈와 포인트 클라우드
-- **Process**: 카메라 파라미터 $$ \( P \ ) $$ 와 포인트 $$ \( X \) $$를 최적화하여 reprojection error를 최소화
+- **Process**: 카메라 파라미터 $$\( P \ )$$ 와 포인트 $$\( X \)$$를 최적화하여 reprojection error를 최소화
 - **Output**: 카메라 포즈 추정 $$\( P = \{ P_c | c = 1, \dots, N_p \} \)$$와 3D 포인트 구조 $$\( X = \{ X_k | k = 1, \dots, N_x \} \)$$
 
 ---
@@ -78,7 +78,7 @@
 ##### 1. Initialization
 - **Input**: SfM(COLMAP)에서 얻은 카메라 포즈와 포인트 클라우드
 - **Output**: 3D Gaussian 분포
-$$ Σ^{3D}= RSS^TR^T $$
+$$Σ^{3D}= RSS^TR^T$$
 - **Description**: COLMAP 등의 SfM 방법을 통해 얻은 카메라 포즈와 포인트 클라우드를 기반으로 3D Gaussian 분포를 초기화합니다.
 
 ---
@@ -86,7 +86,7 @@ $$ Σ^{3D}= RSS^TR^T $$
 ##### 2. Projection
 - **Process**: 3D Gaussian을 이미지 평면(Image Plane)으로 투영
 - **Purpose**: 투영된 결과를 GT(Ground Truth) 이미지와 비교하여 파라미터를 업데이트하기 위함
-$$ Σ^{2D}= JW Σ^{3D} W^TJ^T $$
+$$Σ^{2D}= JW Σ^{3D}W^TJ^T$$
 - **Description**: 각 3D Gaussian이 카메라 뷰를 기준으로 2D 이미지 평면에 투영됩니다. 이 투영된 이미지가 이후 Loss 계산의 기준이 됩니다.
 
 ---
@@ -100,7 +100,7 @@ $$ Σ^{2D}= JW Σ^{3D} W^TJ^T $$
 
 ##### 4. Gradient Flow
 - **Process**: 생성된 이미지와 GT 이미지 사이의 Loss를 계산하고, Loss에 따른 Gradient를 전파
-$$ L = (1 - \lambda) L_1 + \lambda L_{D\text{-}SSIM} $$
+$$L = (1 - \lambda) L_1 + \lambda L_{D\text{-}SSIM}$$
 - **Description**: Loss를 통해 계산된 Gradient를 역전파하여 각 파라미터가 업데이트될 수 있도록 합니다. 이는 모델이 GT 이미지에 더 가깝게 학습되도록 합니다.
 
 ---
@@ -128,7 +128,7 @@ $$ L = (1 - \lambda) L_1 + \lambda L_{D\text{-}SSIM} $$
 
 - **Zero-shot Tracker**: 시점 간 아이덴티티 일관성을 유지하기 위해 마스크 연관(Mask Association)을 수행합니다.
   - **Input**: SAM에서 생성한 2D Mask (m)와 Camera Pose
-  - **Output**: 3D Object Identity Mask $\hat{M}$
+  - **Output**: 3D Object Identity Mask $$\hat{M}$$
 
 ### 3. 3D Gaussian Rendering and Grouping
 
@@ -137,12 +137,12 @@ $$ L = (1 - \lambda) L_1 + \lambda L_{D\text{-}SSIM} $$
 
 1. **Projection from 3D to 2D**:
    - 3D Covariance Matrix ($\Sigma_{3D}$)을 2D로 투영하여 다음과 같이 변환합니다:
-      $$ Σ^{2D}= JW Σ^{3D} W^TJ^T $$ 
+      $$Σ^{2D}= JW Σ^{3D} W^TJ^T$$ 
      ![Covariance](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/methodology/covariance.jpg)
 
 2. **2D 이미지에서 픽셀별 특징 계산**:
    - 각 픽셀의 Identity feature $E_{id}$는 다음과 같이 계산됩니다:
-    $$ E_{\text{id}} = \sum_{i \in \mathcal{N}} e_i \alpha'_i \prod{j=1}^{i-1} (1 - \alpha'_j) $$
+    $$E_{\text{id}} = \sum_{i \in \mathcal{N}} e_i \alpha'_i \prod{j=1}^{i-1} (1 - \alpha'_j)$$
     where,  $$\alpha'_i(x) = \exp \left( - \frac{1}{2} (x - \mu_i)^T (\Sigma^{2D})^{-1} (x - \mu_i) \right)$$
     ![Identity](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/methodology/identity.jpg)
 
@@ -157,7 +157,7 @@ $$ L = (1 - \lambda) L_1 + \lambda L_{D\text{-}SSIM} $$
 
 2. **3D Identity Loss (L_3D)**:
    - KL Divergence를 사용하여 동일 객체에 속하는 가우시안들이 유사한 E_id 값을 가지도록 하여 아이덴티티 인코딩의 일관성을 유지합니다.
-    $$ \mathcal{L}_{3d} = \frac{1}{m} \sum{j=1}^{m} D_{\text{KL}}(P \parallel Q) = \frac{1}{mk} \sum_{j=1}^{m} \sum_{i=1}^{k} F(e_j) \log \left( \frac{F(e_j)}{F(e_i')} \right) $$
+    $$\mathcal{L}_{3d} = \frac{1}{m} \sum{j=1}^{m} D_{\text{KL}}(P \parallel Q) = \frac{1}{mk} \sum_{j=1}^{m} \sum_{i=1}^{k} F(e_j) \log \left( \frac{F(e_j)}{F(e_i')} \right)$$
 
 3. **Final Loss (L_render)**:
    - 재구성 손실과 아이덴티티 손실을 결합하여 최종 손실을 계산합니다:
