@@ -55,7 +55,7 @@ SAM object mask로 전환을 합니다.
 bash script/prepare_pseudo_label.sh [폴더 이름] 1
 ```
 
-전환을 하는 이유는 원하는 객체만을 가져오기 위해서는 segmentation을 통해 원하는 객체를 제외한 나머지 배경 부분을 masking한 뒤, ```edit_object_removal.py``` 파일을 실행해서 원하는 객체 부분을 가져올 수 있기 때문입니다.
+전환을 하는 이유는 원하는 객체만을 가져오기 위해서는 segmentation을 통해 원하는 객체를 제외한 나머지 배경 부분을 masking한 뒤, ```edit_object_removal.py``` 또는 ```edit_background_removal.py``` 파일을 실행해서 원하는 객체 부분을 가져올 수 있기 때문입니다.
 
 ### Segmentation
 
