@@ -80,7 +80,8 @@ Index 값들을 모두 찾았다면 그 값들을 Gaussian Grouping - config 폴
 마지막으로 아래의 파일을 실행시키면, 해당 index 부분을 제외한 나머지 부분들을 지워주게 됩니다.
 
 ```bash
-bash script/edit_object_removal.sh output/bear config/object_removal/[json파일 이름].json
+bash script/edit_object_removal.sh output/bear config/object_removal/[json파일 이름].json # 객체 제거
+bash script/edit_background_removal.sh output/bear config/object_removal/[json파일 이름].json # 배경 제거
 ```
 
 |Before|After|
