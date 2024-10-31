@@ -11,7 +11,7 @@ Co-worker : 박현준, 임도현
 2. Environment and Implementation
 3. Methodology
 4. Results
-5. Analysis and Discussion
+5. Analysis
 6. Conclusion
 7. References
 
@@ -73,9 +73,7 @@ Co-worker : 박현준, 임도현
 
 ---
 
-## 5.Analysis and Discussion
-
-### Analysis
+## 5.Analysis
 
 <Gaussian Grouping>
 
@@ -89,8 +87,6 @@ Co-worker : 박현준, 임도현
 1. 촬영하고자 하는 대상의 크기가 너무 커서 위쪽을 촬영하지 못할 경우, Rendering 했을 때 Quality가 떨어진다.
 2. Index 값을 올바르게 넣지 않을 경우 원하지 않는 부분이 Grouping 되거나, Masking 영역이 제대로 제거 되지 않아 수 많은 artifact들이 생기게 된다
 3. 다양한 각도로 촬영을 해야 보다 정확한 객체 분리가 가능하다
-
-### Discussion
 
 ---
 
