@@ -142,7 +142,7 @@ Segmentation과 Training까지 끝나게 되면 output 폴더 아래에 다음�
 
 그 다음으로 point cloud를 조작한 객체의 정보를 클릭한 뒤, property 창에서 제일 아래로 내려가면 어떤 행렬이 생성되게 됩니다.
 
-![matrix](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/image.png)
+![matrix](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/matrix.png)
 
 4x4 행렬이고, 1행1열부터 3행3열까지는 rotation, 4열은 translation에 대한 정보를 갖고 있습니다. 즉, 해당 객체를 초기 위치에서 얼마만큼 움직였는지에 대한 정보를 나타냅니다.
 
