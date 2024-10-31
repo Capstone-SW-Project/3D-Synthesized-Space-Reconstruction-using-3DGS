@@ -159,7 +159,7 @@ $$L = (1 - \lambda) L_1 + \lambda L_{D\text{-}SSIM}$$
 
 3. **Final Loss (L_render)**:
    - 재구성 손실과 아이덴티티 손실을 결합하여 최종 손실을 계산합니다:  
-    $$L_{\text{render}} = \mathcal{L}_{\text{rec}} + \mathcal{L}_{\text{id}} = \mathcal{L}_{\text{rec}} + \lambda_{\text{2d}} \mathcal{L}_{\text{2d}} + \lambda_{\text{3d}} \mathcal{L}_{\text{3d}}$$  
+    $$L_{{render}} = L_{\text{rec}} + L_{\text{id}} = L_{\text{rec}} + \lambda_{\text{2d}} L_{\text{2d}} + \lambda_{\text{3d}} L_{\text{3d}}$$  
      ![loss](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/methodology/grouping.png)
 
 
