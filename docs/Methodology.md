@@ -138,13 +138,11 @@ $$L = (1 - \lambda) L_1 + \lambda L_{D\text{-}SSIM}$$
 1. **Projection from 3D to 2D**:
    - 3D Covariance Matrix ($\Sigma_{3D}$)을 2D로 투영하여 다음과 같이 변환합니다:  
       $$Σ^{2D}= JW Σ^{3D} W^TJ^T$$ 
-     ![Covariance](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/methodology/covariance.jpg)
 
 2. **2D 이미지에서 픽셀별 특징 계산**:
    - 각 픽셀의 Identity feature $E_{id}$는 다음과 같이 계산됩니다:  
     $$E_{\text{id}} = \sum_{i \in \mathcal{N}} e_i \alpha'_i \prod{j=1}^{i-1} (1 - \alpha'_j)$$  
     where,  $$\alpha'_i(x) = \exp \left( - \frac{1}{2} (x - \mu_i)^T (\Sigma^{2D})^{-1} (x - \mu_i) \right)$$  
-    ![Identity](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/methodology/identity.jpg)
 
    - **참고**: $$E_{\text {id}}$$는 2D 이미지의 각 픽셀에서 계산된 Identity Feature으로, 픽셀이 어떤 객체에 속하는지를 나타냅니다.
 
@@ -157,7 +155,7 @@ $$L = (1 - \lambda) L_1 + \lambda L_{D\text{-}SSIM}$$
 
 2. **3D Identity Loss (L_3D)**:
    - KL Divergence를 사용하여 동일 객체에 속하는 가우시안들이 유사한 E_id 값을 가지도록 하여 아이덴티티 인코딩의 일관성을 유지합니다.  
-    $$\mathcal{L}_{3d} = \frac{1}{m} \sum{j=1}^{m} D_{\text{KL}}(P \parallel Q) = \frac{1}{mk} \sum_{j=1}^{m} \sum_{i=1}^{k} F(e_j) \log \left( \frac{F(e_j)}{F(e_i')} \right)$$
+    $${\mathcal{L}_{3d} = \frac{1}{m} \sum{j=1}^{m} D_{\text{KL}}(P \parallel Q) = \frac{1}{mk} \sum_{j=1}^{m} \sum_{i=1}^{k} F(e_j) \log \left( \frac{F(e_j)}{F(e_i')} \right)}$$
 
 3. **Final Loss (L_render)**:
    - 재구성 손실과 아이덴티티 손실을 결합하여 최종 손실을 계산합니다:  
