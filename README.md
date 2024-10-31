@@ -35,12 +35,13 @@ Co-worker : 박현준, 임도현
 ---
 
 ## 3. Methodology
-[Methodology.md](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/Methodology.md)
+- Methodology : [Methodology.md](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/Methodology.md)
 
 ---
 
 
 ## 4.Results
+
 ### COLMAP
 
 |한양대학교|혼천의|세종대왕|
@@ -48,7 +49,7 @@ Co-worker : 박현준, 임도현
 |![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/COLMAP/hyu.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/COLMAP/clk.jpg)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/COLMAP/king.jpg)|
 
 
-#### Point Cloud
+### Point Cloud
 
 |Wide-view|Front|Rear|
 |:--:|:--:|:--:|
