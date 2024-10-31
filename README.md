@@ -29,8 +29,8 @@ Co-worker : 박현준, 임도현
 ---
 
 ## 2. Environment and Implementation
-- Environment Setting : [EnvSetting.md](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/markdown/Env_Setting.md)
-- Implementation detail : [Implement.md](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/markdown/Implement.md)
+- Environment Setting : [EnvSetting.md](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/Env_Setting.md)
+- Implementation detail : [Implement.md](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/Implement.md)
 
 ---
 
