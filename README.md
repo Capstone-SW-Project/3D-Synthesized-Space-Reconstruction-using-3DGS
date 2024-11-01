@@ -47,6 +47,8 @@ Co-worker : 박현준, 임도현
 |한양대학교|혼천의|세종대왕|
 |:--:|:--:|:--:|
 |![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/COLMAP/hyu.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/COLMAP/clk.jpg)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/COLMAP/king.jpg)|
+|측우기|혼천의|사람|
+|![4](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/COLMAP/rain.jpg)|![5](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/COLMAP/hon.jpg)|![6](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/COLMAP/dororo.jpg)|
 
 
 ### Point Cloud
