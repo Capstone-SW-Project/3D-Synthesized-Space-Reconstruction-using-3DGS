@@ -250,7 +250,7 @@ if filtering:
 print("front : ", xyz1.shape[0])
 print("back : ", xyz2.shape[0])
 
-savepath = "파일 저장 경로"
+savepath = '저장 경로'
 
 scaling_inverse_activation = torch.log
 # CloudCompare에서 가져온 transform matrix 입력
