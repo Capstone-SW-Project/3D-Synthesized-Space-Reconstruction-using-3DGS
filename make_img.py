@@ -4,7 +4,7 @@ import cv2
 import os
 
 # 비디오 파일 경로
-video_path = 'input_video.mp4'  
+video_path = 'input.mp4'  
 folder_name = input("Enter the folder name: ")
 output_folder = f'output_frames/{folder_name}'
 
