@@ -71,7 +71,7 @@ Co-worker : 박현준, 임도현
 
 |원본|결과물(세종대왕)|결과물(측우기)|
 |:--:|:--:|:--:|
-|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/concat.gif)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/synth_result.gif)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/video/hyuhonrain.gif)|
+|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/concat.gif)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/synth_result.gif)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/hyuhonrain.gif)|
 
 ---
 
@@ -90,9 +90,11 @@ Co-worker : 박현준, 임도현
 2. Index 값을 올바르게 넣지 않을 경우 원하지 않는 부분이 Grouping 되거나, Masking 영역이 제대로 제거 되지 않아 수 많은 artifact들이 생기게 된다
 3. 다양한 각도로 촬영을 해야 보다 정확한 객체 분리가 가능하다
 
-* Artifact 예시
-  
-  ![artifact](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/same_index.jpg)
+|Artifact 예시|정확한 객체 분리 예시|
+|:--:|:--:|
+|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/same_index.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/remove_bg.png)|
+
+---
 
 ### 단점 해결 방안
 1. Custom dataset을 수집할 때 최소 2바퀴 이상 촬영을 한다. 그래야 더욱 정확하게 객체에서 feature를 뽑아낼 수 있다.
@@ -100,14 +102,17 @@ Co-worker : 박현준, 임도현
 3. 촬영을 할 때, 측우기 COLMAP 처럼 하부/중부/상부로 나눠서 촬영을 하면 더욱 정확하게 3차원 복원이 가능하다
 4. 빛의 영향을 많이 받는 경우 Camera pose estimation의 정확도가 떨어지기 때문에 가급적 광원이 고정되어 있고, 균일하게 빛을 받는 상태에서 dataset을 수집한다.
 5. 크기가 큰 물체의 경우 드론을 이용하거나 최대한 전체적인 모습이 담길 수 있도록 촬영을 한다.
+6. 정확한 index 값을 config 파일에 넣는다.
 
-[예시]
+---
 
-|||
+* 2바퀴 이상 촬영을 한 뒤 렌더링한 결과
+
+|좌|우|
 |:--:|:--:|
 |![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/result4.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/result5.jpg)|
 
-측우기의 경우 받침석에 각인되어 있는 한자까지 상당히 고퀄리티로 복원이 된 것을 확인할 수 있다.
+3바퀴를 돌며 하부/중부/상부를 촬영한 측우기의 경우 받침석에 각인되어 있는 한자까지 상당히 고퀄리티로 복원이 된 것을 확인할 수 있다.
 
 ---
 
