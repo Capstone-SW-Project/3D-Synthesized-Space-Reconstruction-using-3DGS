@@ -1,8 +1,16 @@
 # Implementation
 
-이 파일에서는 여러 장의 input image들로 부터 3D space를 복원하고, 복원한 space에 서로 다른 배경에 존재하고 있던 객체들을 합성하는 task의 전체적인 실행 방법에 대한 설명하도록 하겠습니다.
+이 파일에서는 여러 장의 input image들로 부터 3D space를 복원하고, 복원한 space에 서로 다른 배경에 존재하고 있던 객체들의 feature들을 3DGS로 뽑아내고 그 과정에서 생성된 Point Cloud를 합성하여 새로운 3D Space를 reconstruct하는 과정의 전체적인 실행 방법에 대한 설명하도록 하겠습니다.
 
 ## COLMAP
+
+COLMAP을 돌리기 이전에, Custom dataset이 동영상 파일인 경우 이를 frame 단위로 잘라서 image 파일 여러 장을 만들어 주어야 합니다. 이를 진행하는 파일이 ```make_img.py``` 파일이고, Video 파일 경로만 입력해준 뒤 실행을 하면 terminal에 이름을 입력하라고 뜨는데 여기에 생성된 image 파일들이 저장될 폴더의 이름을 넣어주면 ```output_frame/[입력한 폴더 이름]```의 구성으로 폴더가 생성되고 그 안에 image들이 저장되어 있는 것을 확인할 수 있습니다.
+
+150-200 장의 image가 생성되도록 ```frame_interval``` 값을 조정해주는 것이 권장되지만, 결국 이게 image들로 부터 Camera의 pose를 추정하고 해당 camera가 바라보는 view를 통해 객체의 위치정보를 파악하는 과정이기 때문에 image의 개수는 accuracy와 비례할 것이고 150-200 장이 권장 되는 이유는 이정도 양으로도 나중에 충분히 잘 reconstruct되고 개수가 많아지면 training과 rendering 시간이 그만큼 늘어나기 때문에 최적의 개수로 정한 것이 150-200 이라고 생각했습니다.
+
+```bash
+python make_img.py
+```
 
 ![colmap_impl](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/colmap_impl.png)
 COLMAP 실행 후 노란색 형광펜으로 칠한 부분 (Automatic Reconstruction)을 클릭하면 위와 같은 화면이 나옵니다.
@@ -15,20 +23,21 @@ COLMAP 실행 후 노란색 형광펜으로 칠한 부분 (Automatic Reconstruct
 python image_resize.py
 ```
 
-아래 옵션에서는 ```Dense model```은 필요 없기 때문에 체크 해제를 하고 ```Sparse model```만 생성을 하도록 설정한 뒤 GPU 여부를 체크한 뒤 ```Run```을 클릭하면 작동이 됩니다.
+아래 옵션에서는 ```Dense model```은 있으면 좋긴 하지만, 오래 걸릴 뿐더러 ```Sparse Model```과 별 차이가 없기 때문에 체크 해제를 하고 ```Sparse model```만 생성을 하도록 설정한 뒤 GPU 여부를 체크한 뒤 ```Run```을 클릭하면 작동이 됩니다. 
 
 다 끝나면 아까 지정했던 ```Workspace folder```에 결과물들이 저장 됩니다.
 
 ![colmap_output](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/colmap_output.png)
 
-> 한가지 더 중요한 내용은, 3DGS를 돌릴 때 ```SIMPLE PINHOLE``` 또는 ```PINHOLE``` 카메라로 세팅을 해주어야하는데, 이 과정은 다음과 같습니다.
+> 한가지 더 중요한 내용은, 3DGS를 돌릴 때 ```SIMPLE PINHOLE``` 또는 ```PINHOLE``` 카메라로 세팅이 되어 있어야하는데, 이를 설정하기 위한 과정은 다음과 같습니다.
+> 이 때, reconstruction을 하기 전에 이 과정이 먼저 선행이 되어야 합니다.
 > 
 >1. File - New project - [database, images] 입력
 >2. Processing - Feature Extraction에서 ```SIMPLE PINHOLE``` 옵션을 선택하고 Extract를 클릭합니다. 제대로 바꼈는지 확인하고 싶다면 Processing - database management에 들어가서 카메라 옵션이 ```SIMPLE PINHOLE```로 바꼈는지 확인하면 됩니다.
 > 
 > ![pinhole](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/pinhole.png)
 >
->3. Auto reconstruction을 클릭한 뒤 ```database``` 파일 경로와 ```images``` 폴더 경로를 입력합니다.
+>3. Auto reconstruction을 클릭한 뒤 ```database``` 파일 경로와 ```images``` 폴더 경로를 입력하고 reconstruction을 시작합니다.
 
 여기까지 하게 되면 ```cameras.json```, ```cfg_args``` 파일들과 sparse 폴더 내에 ```cameras.bin```, ```images.bin```, ```points3D.bin``` 파일들이 생성 됩니다.
 이제 이 결과물들을 Gaussian Grouping을 세팅해 놓은 폴더에 복사를 해서 input으로 입력을 해주면 됩니다.
@@ -61,7 +70,9 @@ bash script/prepare_pseudo_label.sh [폴더 이름] 1
 
 Segmentation을 해서 객체를 지정한 뒤 그 객체 또는 배경을 지워야 하는데, 위에서 ```prepare_pseudo_label.sh``` 파일로 segmentation 된 image들이 생성되었다면, 이 image들에서 원하는 객체에 대한 정보를 불러와야 합니다. 그러기 위해서 ```Output/Annotations``` 폴더에 들어가 보면 어두운 색깔들로 segmentation이 된 image들이 여러장 존재하는 것을 확인할 수 있습니다. 여러 장의 Annotated image들 중 임의로 하나를 다운로드 받아서 그림판으로 연 뒤, 스포이드 모양으로 원하는 위치를 찍어서 색깔 정보를 보게 되면 아래의 그림처럼 RGB 값이 모두 동일한 정수값으로 주어져 있는 것을 확인할 수 있습니다.
 
-![index](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/index.png)
+|Mask Image|Find Index|
+|:--:|:--:|
+|![mask](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/img/explain/mask.png)|![index](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/index.png)|
 
 이 값이 곧 segmentation을 했을 때 객체가 갖고 있는 index가 됩니다. 즉, 아래의 그림 처럼 Gaussian 들이 grouping을 한 후에 갖는 index 값을 의미합니다. 이 때 하나의 이미지에서 객체가 갖고 있는 index 값은 여러 개 일 수도 있기 때문에 모든 index 값을 찾아서 입력으로 넣어주어야 합니다.
 
