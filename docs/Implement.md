@@ -80,8 +80,8 @@ Index 값들을 모두 찾았다면 그 값들을 Gaussian Grouping - config 폴
 마지막으로 아래의 파일을 실행시키면, 해당 index 부분을 제외한 나머지 부분들을 지워주게 됩니다.
 
 ```bash
-bash script/edit_object_removal.sh output/bear config/object_removal/[json파일 이름].json # 객체 제거
-bash script/edit_background_removal.sh output/bear config/object_removal/[json파일 이름].json # 배경 제거
+bash script/edit_object_removal.sh output/[dataset 이름] config/object_removal/[json파일 이름].json # 객체 제거
+bash script/edit_background_removal.sh output/dataset 이이름] config/object_removal/[json파일 이름].json # 배경 제거
 ```
 
 |Before|After|
@@ -161,9 +161,9 @@ savepath = '새롭게 생성한 ply 파일이 저장될 위치'
 scaling_inverse_activation = torch.log
 # 이 부분에 CloudCompare에서 얻은 matrix value를 넣으면 됨
 transform = torch.tensor(
-    [[-0.561683, 0.188307, 0.805638, -1.117590],
-     [-0.101479, 0.950722, -0.292968, -0.038309],
-     [-0.821106, -0.246310, -0.514895, 1.115122],
+    [[1.000000, 0.000000, 0.000000, 0.000000],
+     [0.000000, 1.000000, 0.000000, 0.000000],
+     [0.000000, 0.000000, 1.000000, 0.000000],
      [0.000000, 0.000000, 0.000000, 1.000000]], device="cuda")
 save_transform = transform.cpu().numpy()
 ```
