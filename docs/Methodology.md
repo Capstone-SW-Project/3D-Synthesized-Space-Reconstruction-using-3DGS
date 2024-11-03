@@ -1,14 +1,8 @@
 # Methodology
 
-## COLMAP 3D Reconstruction Process
-![colmap](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/methodology/colmap_process.png)
-
-### Images
-- 여러 이미지 입력
-
----
-
 ## Incremental SfM (=COLMAP)
+
+![colmap](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/methodology/colmap_process.png)
 
 ### 1) Correspondence Search (대응점 검색)
 
