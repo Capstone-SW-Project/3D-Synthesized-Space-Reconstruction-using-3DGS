@@ -332,7 +332,8 @@ transform = torch.tensor([
 
     동차 좌표계를 위한 고정값
 
-$P_1'=P_1\dot T$
+
+   $P_1'=P_1 T$
 
 ---
 
