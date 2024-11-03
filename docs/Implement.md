@@ -68,7 +68,13 @@ bash script/prepare_pseudo_label.sh [폴더 이름] 1
 
 ### Segmentation
 
-Segmentation을 해서 객체를 지정한 뒤 그 객체 또는 배경을 지워야 하는데, 위에서 ```prepare_pseudo_label.sh``` 파일로 segmentation 된 image들이 생성되었다면, 이 image들에서 원하는 객체에 대한 정보를 불러와야 합니다. 그러기 위해서 ```Output/Annotations``` 폴더에 들어가 보면 어두운 색깔들로 segmentation이 된 image들이 여러장 존재하는 것을 확인할 수 있습니다. 여러 장의 Annotated image들 중 임의로 하나를 다운로드 받아서 그림판으로 연 뒤, 스포이드 모양으로 원하는 위치를 찍어서 색깔 정보를 보게 되면 아래의 그림처럼 RGB 값이 모두 동일한 정수값으로 주어져 있는 것을 확인할 수 있습니다.
+Segmentation을 해서 객체를 지정한 뒤 그 객체 또는 배경을 지워야 하는데, 위에서 ```prepare_pseudo_label.sh``` 파일로 segmentation 된 image들이 생성되었다면, 이 image들에서 원하는 객체에 대한 정보를 불러와야 합니다.
+
+```bash
+bash script/prepare_pseudo_label.sh [data 폴더 이름] 1
+```
+
+코드를 실행하게 되면 ```data/[data 폴더 이름 (e.g., Apple)]```에 ```object_mask```라는 폴더가 생성되고 그 안에 input image와 동일한 개수의 흑백 image들이 생성되어 있는 것을 확인할 수 있습니다. 그 중 임의의 image를 다운 받아서 그림판으로 연 뒤, 스포이드로 원하는 객체를 찍고 색상 정보를 확인하면 R,G,B 값이 전부 동일한 것을 알 수 있습니다. 
 
 |Mask Image|Find Index|
 |:--:|:--:|
