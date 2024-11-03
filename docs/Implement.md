@@ -20,7 +20,7 @@ COLMAP 실행 후 노란색 형광펜으로 칠한 부분 (Automatic Reconstruct
 이 때, input image의 경우 크기가 너무 크면 COLMAP이 돌아가는데 상당히 많은 시간이 소요되기 때문에 시간 단축을 위해 image의 크기를 1000x1000 이하로 줄이는 것을 추천드립니다. Image 크기를 줄이는 방법은 같이 있는 ```image_resize.py``` 파일에 imagepath와 savepath를 입력해서 실행을 하면 됩니다.
 
 ```python
-python image_resize.py
+python img_resize.py
 ```
 
 아래 옵션에서는 ```Dense model```은 있으면 좋긴 하지만, 오래 걸릴 뿐더러 ```Sparse Model```과 별 차이가 없기 때문에 체크 해제를 하고 ```Sparse model```만 생성을 하도록 설정한 뒤 GPU 여부를 체크한 뒤 ```Run```을 클릭하면 작동이 됩니다. 
