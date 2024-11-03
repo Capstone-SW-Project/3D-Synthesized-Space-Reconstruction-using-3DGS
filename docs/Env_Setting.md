@@ -2,17 +2,21 @@
 
 Gaussian Grouping을 이용하여 다른 배경에 존재하고 있던 object를 원하는 배경으로 가져와서 3D로 reconstruction을 하기 위해서는 4가지 설정이 필요합니다.
 
-1. COLMAP 설치\
- COLMAP을 통해 input image들을 이용하여 point cloud와 camera 정보를 얻어와야 gaussian splatting을 통해 reconstruction을 할 수 있습니다.
+#### 1. COLMAP 설치
+ 
+ : COLMAP을 통해 input image들을 이용하여 point cloud와 camera 정보를 얻어와야 gaussian splatting을 통해 reconstruction을 할 수 있습니다.
 
-2. Gaussian Grouping\
- Gaussain Grouping을 돌리기 위한 환경 설정이 필요합니다.
+#### 2. Gaussian Grouping
+ 
+ : Gaussain Grouping을 돌리기 위한 환경 설정이 필요합니다.
 
-3. CloudCompare\
- CloudCompare 프로그램을 설치해서 object를 옮길 배경, 옮기고 싶은 object에 대해 각각 돌린 3DGS point cloud를 불러와서 object를 배경 위에 합성합니다.
+#### 3. CloudCompare
+ 
+ : CloudCompare 프로그램을 설치해서 object를 옮길 배경, 옮기고 싶은 object에 대해 각각 돌린 3DGS point cloud를 불러와서 object를 배경 위에 합성합니다.
 
-4. GS Viewer\
- 3DGS를 돌리고 나온 output을 이용하여 제대로 rendering이 되었는지 결과물을 확인하기 위해 전용 viewer가 필요합니다.
+#### 4. GS Viewer
+ 
+ : 3DGS를 돌리고 나온 output을 이용하여 제대로 rendering이 되었는지 결과물을 확인하기 위해 전용 viewer가 필요합니다.
 
 ## COLMAP
 
