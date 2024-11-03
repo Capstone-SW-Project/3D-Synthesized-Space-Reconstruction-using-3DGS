@@ -90,7 +90,7 @@ Index 값들을 모두 찾았다면 그 값들을 Gaussian Grouping - config 폴
 
 ```bash
 bash script/edit_object_removal.sh output/[dataset 이름] config/object_removal/[json파일 이름].json # 객체 제거
-bash script/edit_background_removal.sh output/dataset 이이름] config/object_removal/[json파일 이름].json # 배경 제거
+bash script/edit_background_removal.sh output/dataset 이름] config/object_removal/[json파일 이름].json # 배경 제거
 ```
 
 |Before|After|
