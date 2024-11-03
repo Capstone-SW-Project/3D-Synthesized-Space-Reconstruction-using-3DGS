@@ -58,14 +58,6 @@ Gaussian Grouping의 경우 논문의 저자가 Github에 적어 놓은 설명 �
     |---...
 ```
 
-SAM object mask로 전환을 합니다.
-
-```
-bash script/prepare_pseudo_label.sh [폴더 이름] 1
-```
-
-전환을 하는 이유는 원하는 객체만을 가져오기 위해서는 segmentation을 통해 원하는 객체를 제외한 나머지 배경 부분을 masking한 뒤, ```edit_object_removal.py``` 또는 ```edit_background_removal.py``` 파일을 실행해서 원하는 객체 부분을 가져올 수 있기 때문입니다.
-
 ### Segmentation
 
 Segmentation을 해서 객체를 지정한 뒤 그 객체 또는 배경을 지워야 하는데, 위에서 ```prepare_pseudo_label.sh``` 파일로 segmentation 된 image들이 생성되었다면, 이 image들에서 원하는 객체에 대한 정보를 불러와야 합니다.
