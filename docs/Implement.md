@@ -88,8 +88,16 @@ Index 값들을 모두 찾았다면 그 값들을 Gaussian Grouping - config 폴
     "select_obj_id" : [index numbers]
 }
 ```
+> 정석대로라면, 위와 같이 index 값들을 그림판을 통해 일일히 다 찾아야 하지만 조금 더 편리하게 찾기 위해 code로 mask image의 고유한 index 값과 index 값을 찾은 위치를 불러와서 bounding box를 그린 뒤 해당 bounding box에 index 값을 집어넣어서 직관적으로 원하는 객체의 index 값이 어떤 값인지를 알 수 있도록 구현하였습니다.
+>
+> [code(find_idx.py)](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/find_idx.py)
+>
+> |세종대왕|혼천의|측우기|
+> |:--:|:--:|:--:|
+> |![1](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/data/sejong/overlay_mask/overlay_frame_0110.png)|![2](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/data/hon/overlay_mask/overlay_frame_0203.png)|![3](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/data/rain/overlay_mask/overlay_frame_0035.png)|
 
-마지막으로 아래의 파일을 실행시키면, 해당 index 부분을 제외한 나머지 부분들을 지워주게 됩니다.
+
+Object removal (Background removal)을 하기 위한 모든 전처리 과정을 끝마쳤다면, 마지막으로 아래의 파일을 실행시켜서 해당 index 부분을 제외한 나머지 부분들을 지워주면 됩니다.
 
 ```bash
 bash script/edit_object_removal.sh output/[dataset 이름] config/object_removal/[json파일 이름].json # 객체 제거
