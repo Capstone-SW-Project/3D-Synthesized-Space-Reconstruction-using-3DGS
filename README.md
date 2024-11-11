@@ -46,16 +46,16 @@ Co-worker : 박현준, 임도현
 
 |한양대학교|혼천의|세종대왕|
 |:--:|:--:|:--:|
-|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/COLMAP/hyu.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/COLMAP/clk.jpg)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/COLMAP/king.jpg)|
+|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/COLMAP/hyu.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/COLMAP/clk.jpg)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/COLMAP/king.jpg)|
 |측우기|혼천의|사람|
-|![4](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/COLMAP/rain.jpg)|![5](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/COLMAP/hon.jpg)|![6](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/COLMAP/dororo.jpg)|
+|![4](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/COLMAP/rain.jpg)|![5](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/COLMAP/hon.jpg)|![6](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/COLMAP/dororo.jpg)|
 
 
 ### Point Cloud
 
 |Wide-view|Front|Rear|
 |:--:|:--:|:--:|
-|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/pointcloud1.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/pointcloud2.jpg)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/pointcloud3.jpg)|
+|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/pointcloud1.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/pointcloud2.jpg)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/pointcloud3.jpg)|
 
 ## Rendering
 
@@ -63,15 +63,15 @@ Co-worker : 박현준, 임도현
 
 |한양대|+|혼천의|
 |:--:|:--:|:--:|
-|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/clock1.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/clock2.jpg)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/clock4.jpg)|
+|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/clock1.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/clock2.jpg)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/clock4.jpg)|
 |한양대|+ 혼천의|+ 세종대왕|
-|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/result1.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/result2.jpg)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/result3.jpg)|
+|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/result1.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/result2.jpg)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/result3.jpg)|
 
 ### GIF
 
 |원본|결과물(세종대왕)|결과물(측우기)|
 |:--:|:--:|:--:|
-|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/concat.gif)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/synth_result.gif)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/hyuhonrain.gif)|
+|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/rendering/concat.gif)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/rendering/synth_result.gif)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/rendering/hyuhonrain.gif)|
 
 ---
 
@@ -92,7 +92,7 @@ Co-worker : 박현준, 임도현
 
 |Artifact 예시|정확한 객체 분리 예시|
 |:--:|:--:|
-|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/same_index.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/remove_bg.png)|
+|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/same_index.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/rendering/remove_bg.png)|
 
 ---
 
@@ -110,7 +110,7 @@ Co-worker : 박현준, 임도현
 
 |좌|우|
 |:--:|:--:|
-|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/result5.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/result/result4.jpg)|
+|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/result5.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/result4.jpg)|
 
 3바퀴를 돌며 하부/중부/상부를 촬영한 측우기의 경우 받침석에 각인되어 있는 한자까지 상당히 고퀄리티로 복원이 된 것을 확인할 수 있다.
 
