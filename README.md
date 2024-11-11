@@ -102,7 +102,7 @@ Co-worker : 박현준, 임도현
 3. 촬영을 할 때, 측우기 COLMAP 처럼 하부/중부/상부로 나눠서 촬영을 하면 더욱 정확한 3차원 복원이 가능하다.
 4. 빛의 영향을 많이 받는 경우 Camera pose estimation의 정확도가 떨어지기 때문에 가급적 광원이 고정되어 있고, 균일하게 빛을 받는 상태에서 dataset을 수집한다.
 5. 크기가 큰 물체의 경우 드론을 이용하거나 최대한 전체적인 모습이 담길 수 있도록 촬영을 한다.
-6. 정확한 index 값을 config 파일에 넣는다.
+6. 정확한 index 값을 config 파일에 넣는다 $\rightarrow$ **[find_idx.py](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/find_idx.py)로 직관적인 index 값 확인 가능**
 
 ---
 
