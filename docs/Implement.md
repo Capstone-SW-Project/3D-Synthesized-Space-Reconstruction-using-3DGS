@@ -12,7 +12,7 @@ COLMAP을 돌리기 이전에, Custom dataset이 동영상 파일인 경우 이�
 python make_img.py
 ```
 
-![colmap_impl](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/colmap_impl.png)
+![colmap_impl](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/colmap_impl.png)
 COLMAP 실행 후 노란색 형광펜으로 칠한 부분 (Automatic Reconstruction)을 클릭하면 위와 같은 화면이 나옵니다.
 
 그 뒤, ```Workspace folder```에는 COLMAP을 돌린 뒤 결과물이 저장될 폴더의 경로를 입력하고, ```Image folder```에는 COLMAP에 넣을 input image들이 들어 있는 폴더의 경로를 입력합니다.
@@ -27,7 +27,7 @@ python img_resize.py
 
 다 끝나면 아까 지정했던 ```Workspace folder```에 결과물들이 저장 됩니다.
 
-![colmap_output](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/colmap_output.png)
+![colmap_output](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/colmap_output.png)
 
 > 한가지 더 중요한 내용은, 3DGS를 돌릴 때 ```SIMPLE PINHOLE``` 또는 ```PINHOLE``` 카메라로 세팅이 되어 있어야하는데, 이를 설정하기 위한 과정은 다음과 같습니다.
 > 이 때, reconstruction을 하기 전에 이 과정이 먼저 선행이 되어야 합니다.
@@ -35,7 +35,7 @@ python img_resize.py
 >1. File - New project - [database, images] 입력
 >2. Processing - Feature Extraction에서 ```SIMPLE PINHOLE``` 옵션을 선택하고 Extract를 클릭합니다. 제대로 바꼈는지 확인하고 싶다면 Processing - database management에 들어가서 카메라 옵션이 ```SIMPLE PINHOLE```로 바꼈는지 확인하면 됩니다.
 > 
-> ![pinhole](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/pinhole.png)
+> ![pinhole](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/pinhole.png)
 >
 >3. Auto reconstruction을 클릭한 뒤 ```database``` 파일 경로와 ```images``` 폴더 경로를 입력하고 reconstruction을 시작합니다.
 
@@ -70,11 +70,11 @@ bash script/prepare_pseudo_label.sh [data 폴더 이름] 1
 
 |Mask Image|Find Index|
 |:--:|:--:|
-|![mask](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/img/explain/mask.png)|![index](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/index.png)|
+|![mask](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/mask.png)|![index](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/index.png)|
 
 이 값이 곧 segmentation을 했을 때 객체가 갖고 있는 index가 됩니다. 즉, 아래의 그림 처럼 Gaussian 들이 grouping을 한 후에 갖는 index 값을 의미합니다. 이 때 하나의 이미지에서 객체가 갖고 있는 index 값은 여러 개 일 수도 있기 때문에 모든 index 값을 찾아서 입력으로 넣어주어야 합니다.
 
-![GG](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/Gaussian_Grouping.jpg)
+![GG](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/Gaussian_Grouping.jpg)
 
 Index 값들을 모두 찾았다면 그 값들을 Gaussian Grouping - config 폴더에 ```[폴더명].json``` 파일을 생성한 뒤 다음과 같이 코드를 적고 index numbers 배열에 index 값들을 모두 넣어준 뒤 파일을 저장하면 됩니다.
 
@@ -95,7 +95,7 @@ bash script/edit_background_removal.sh output/dataset 이름] config/object_remo
 
 |Before|After|
 |:--:|:--:|
-|![before](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/before.jpg)|![after](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/after.jpg)|
+|![before](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/before.jpg)|![after](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/after.jpg)|
 
 
 ### Training
@@ -131,7 +131,7 @@ Segmentation과 Training까지 끝나게 되면 output 폴더 아래에 다음�
 
 생성된 image들의 결과를 확인하기 위해 나머지 다섯 개의 image를 하나로 합쳐 놓은 concat image를 보면 ```gt - renders - gt_objects_color - objects_pred - object_features16``` 순서로 image가 생성되어 있어서 output들을 한 번에 확인할 수 있습니다.
 
-![concat](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/concat.jpg)
+![concat](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/concat.jpg)
 
 이 과정이 끝났다면 둘 중 하나의 과정으로 넘어가면 됩니다.
 
@@ -147,11 +147,11 @@ Segmentation과 Training까지 끝나게 되면 output 폴더 아래에 다음�
 
 >아래의 그림에서 노란색/초록색으로 표현된 point들이 한양대, 빨간색으로 표현된 point들이 세종대왕 동상에 대한 point cloud 입니다.
 
-![synthesize](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/cloudcpr.png)
+![synthesize](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/cloudcpr.png)
 
 그 다음으로 point cloud를 조작한 객체의 정보를 클릭한 뒤, property 창에서 제일 아래로 내려가면 어떤 행렬이 생성되게 됩니다.
 
-![matrix](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/matrix.png)
+![matrix](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/matrix.png)
 
 4x4 행렬이고, 1행1열부터 3행3열까지는 rotation, 4열은 translation에 대한 정보를 갖고 있습니다. 즉, 해당 객체를 초기 위치에서 얼마만큼 움직였는지에 대한 정보를 나타냅니다.
 
@@ -196,4 +196,4 @@ python composition_ply.py
 
 예시로, 한양대 사자상 앞에 광화문 세종대왕 동상 앞에 있는 혼천의 동상을 가져다 놓으면 아래와 같이 rendering이 됩니다.
 
-![final](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/explain/final.png)
+![final](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/final.png)
