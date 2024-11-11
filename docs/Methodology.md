@@ -2,7 +2,7 @@
 
 ## Incremental SfM (=COLMAP)
 
-![colmap](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/methodology/colmap_process.png)
+![colmap](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/methodology/colmap_process.png)
 
 ### 1) Correspondence Search (대응점 검색)
 
@@ -83,7 +83,7 @@ $E = \sum_j \rho_j \left( \| \pi(P_c, X_k) - X_j \|_2 \right)^2$
 - **Process**: 잘못된 매칭이나 노이즈로 인해 발생한 Outliers를 제거하여 구조를 정제
 - **Output**: Outliers가 제거된 정제된 포인트 클라우드
 
-![PnP](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/img/methodology/PnP_Algo.png)
+![PnP](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/methodology/PnP_Algo.png)
 
 **PnP Algorithm** : 3D 공간에서의 점들의 위치와 해당 점들의 2D 이미지 내 위치를 기반으로 카메라 포즈를 추정하는데 사용된다.
 
@@ -94,7 +94,7 @@ $E = \sum_j \rho_j \left( \| \pi(P_c, X_k) - X_j \|_2 \right)^2$
 
 ### 1) SAM의 3요소
 
-![SAM](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/img/methodology/SAM.png)
+![SAM](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/methodology/SAM.png)
 
 1. Prompt: 
 
@@ -113,11 +113,11 @@ $E = \sum_j \rho_j \left( \| \pi(P_c, X_k) - X_j \|_2 \right)^2$
 
 ### 2) Model
 
-![encoder](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/img/methodology/Encoder.png)
+![encoder](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/methodology/Encoder.png)
 
 #### 2-1) Image Encoder (MAE Pretrained ViT)
 
-![MAE](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/img/methodology/MAE_pretrained_ViT.png)
+![MAE](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/methodology/MAE_pretrained_ViT.png)
 
 1. Split image into patches:
     
@@ -159,7 +159,7 @@ $E = \sum_j \rho_j \left( \| \pi(P_c, X_k) - X_j \|_2 \right)^2$
 
 ### 1) Process
 
-![3DGS](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/img/methodology/3gds_process.png)
+![3DGS](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/methodology/3gds_process.png)
 
 3D Gaussian Splatting은 SfM(Structure from Motion)으로부터 얻은 초기 3D 정보를 바탕으로 Gaussian 분포를 학습하여 이미지 생성 과정에서 활용하는 기법이다. 본 문서에서는 COLMAP을 사용하여 얻은 카메라 포즈와 포인트 클라우드 정보를 초기화하고, 최적화를 통해 GT(Ground Truth) 이미지에 가깝도록 조정하는 일련의 과정을 설명한다.
 
@@ -201,7 +201,7 @@ $$L = (1 - \lambda) L_1 + \lambda L_{D\text{-}SSIM}$$
 #### 1-5) Adaptive Density Control
 - **Process**: Gradient에 기반하여 Gaussian 형태를 변환
 
-![adaptive](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/methodology/adaptive.png)
+![adaptive](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/methodology/adaptive.png)
 
 - **Description**: Gradient를 기반으로 각 Gaussian의 형태(위치, 크기, 밀도 등)를 조정하여 최적화합니다. 이를 통해 Gaussian이 GT 이미지와 일치하는 방향으로 업데이트됩니다.
 
@@ -222,7 +222,7 @@ Adaptive Density Control 단계에서는 이전 단계에서 계산된 Gradient�
 ## Gaussian Grouping
 
 ### Process
-![GG](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/img/methodology/GG_process.png)
+![GG](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/methodology/GG_process.png)
 
 #### 1) 2D Image and Mask Input
 
@@ -239,7 +239,7 @@ Adaptive Density Control 단계에서는 이전 단계에서 계산된 Gradient�
   - **Input**: SAM에서 생성한 2D Mask (m)와 Camera Pose
   - **Output**: 3D Object Identity Mask $$\hat{M}$$
 
-![Asso](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/img/methodology/Association.png)
+![Asso](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/methodology/Association.png)
 
 ---
 
@@ -285,7 +285,7 @@ $$L_{3d} = \frac{1}{m} \sum{j=1}^{m} D_{\text{KL}}(P \parallel Q) = \frac{1}{mk}
 
 $$L_{{render}} = L_{\text{rec}} + L_{\text{id}} = L_{\text{rec}} + \lambda_{\text{2d}} L_{\text{2d}} + \lambda_{\text{3d}} L_{\text{3d}}$$  
 
-![loss](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/methodology/grouping.png)
+![loss](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/methodology/grouping.png)
 
 ---
 
