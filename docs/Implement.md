@@ -29,7 +29,10 @@ python img_resize.py
 
 ![colmap_output](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/colmap_output.png)
 
-> 한가지 더 중요한 내용은, 3DGS를 돌릴 때 ```SIMPLE PINHOLE``` 또는 ```PINHOLE``` 카메라로 세팅이 되어 있어야하는데, 이를 설정하기 위한 과정은 다음과 같습니다.
+> 한가지 더 중요한 내용은, 3DGS를 돌릴 때 ```SIMPLE PINHOLE``` 또는 ```PINHOLE``` 카메라로 세팅이 되어 있어야합니다.
+> ```scene/dataset_readers.py``` 파일에서 ```readColmapCameras``` 함수를 확인하면, model이 ```SIMPLE_PINHOLE``` 또는 ```PINHOLE```로 세팅이 되어 있는 것을 확인할 수 있습니다.
+> ![why_pinhole](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/why_pinhole.jpg)
+> 따라서 COLMAP을 돌릴 때도 카메라 세팅을 해주어야 하고 이를 설정하기 위한 과정은 다음과 같습니다.
 > 이 때, reconstruction을 하기 전에 이 과정이 먼저 선행이 되어야 합니다.
 > 
 >1. File - New project - [database, images] 입력
