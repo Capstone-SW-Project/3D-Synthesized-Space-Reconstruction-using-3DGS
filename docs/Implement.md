@@ -92,6 +92,11 @@ Index 값들을 모두 찾았다면 그 값들을 Gaussian Grouping - config 폴
 >
 > [code(find_idx.py)](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/find_idx.py)
 >
+> [실행 방법]
+> ```bash
+> python find_idx.py -d [dataset 이름]
+> ```
+> 
 > |세종대왕|혼천의|측우기|
 > |:--:|:--:|:--:|
 > |![1](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/data/sejong/overlay_mask/overlay_frame_0110.png)|![2](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/data/hon/overlay_mask/overlay_frame_0203.png)|![3](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/data/rain/overlay_mask/overlay_frame_0035.png)|
