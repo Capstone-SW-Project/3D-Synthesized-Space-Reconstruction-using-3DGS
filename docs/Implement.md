@@ -4,7 +4,7 @@
 
 ### Overall Implementation Command
 
-모든 과정을 진행하기 위해서는 input을 만드는 preprocessing 과정부터 segmenting, training, object_removal 과정을 거쳐 cloudcompare에서 point cloud를 합성하고 거기서 나온 변환 matrix를 ```composition_ply.py```를 이용해 합성을 해야 합니다.
+모든 과정을 진행하기 위해서는 input을 만드는 preprocessing 과정부터 segmentation, training, object_removal 과정을 거쳐 cloudcompare에서 point cloud를 합성하고 거기서 나온 변환 matrix를 ```composition_ply.py```를 이용해 합성을 해야 합니다.
 꽤나 많은 과정이 있다보니 순서가 뒤바뀌거나 argument를 잘못 전달하는 등의 실수가 발생할 수 있어서 전체 과정 동안 실행시키는 bash 파일들을 하나로 묶어서 ```run_all.sh``` 파일만 실행시키면 preprocessing부터 object_removal이 한번에 진행되도록 파일을 만들었습니다.
 (COLMAP을 실행시키는 과정과 pointcloud 합성 과정은 local 환경에서 진행을 했기 때문에 이 파일에는 집어넣지 않았습니다.)
 
