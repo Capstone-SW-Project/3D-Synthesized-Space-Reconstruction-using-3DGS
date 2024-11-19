@@ -2,6 +2,27 @@
 
 이 파일에서는 여러 장의 input image들로 부터 3D space를 복원하고, 복원한 space에 서로 다른 배경에 존재하고 있던 객체들의 feature들을 3DGS로 뽑아내고 그 과정에서 생성된 Point Cloud를 합성하여 새로운 3D Space를 reconstruct하는 과정의 전체적인 실행 방법에 대한 설명하도록 하겠습니다.
 
+### Overall Implementation Command
+
+```bash
+# Preprocess to make proper images for input
+python make_img.py   #optional
+python img_resize.py  #optional
+
+# Make segmented images and find index of target objects
+bash script/prepare_pseudo_label.sh [dataset 이름] [scale]
+
+# choose one option for removal operation
+bash script/edit_object_removal.sh output/[dataset 이름] config/object_removal/[json파일 이름].json  # 객체 제거
+bash script/edit_background_removal.sh output/dataset 이름] config/object_removal/[json파일 이름].json  # 배경 제거
+
+# train
+bash script/train.sh [폴더 이름] [scale]
+
+# After synthesize two different point clouds
+python composition_ply.py
+```
+
 ## COLMAP
 
 COLMAP을 돌리기 이전에, Custom dataset이 동영상 파일인 경우 이를 frame 단위로 잘라서 image 파일 여러 장을 만들어 주어야 합니다. 이를 진행하는 파일이 ```make_img.py``` 파일이고, Video 파일 경로만 입력해준 뒤 실행을 하면 terminal에 이름을 입력하라고 뜨는데 여기에 생성된 image 파일들이 저장될 폴더의 이름을 넣어주면 ```output_frame/[입력한 폴더 이름]```의 구성으로 폴더가 생성되고 그 안에 image들이 저장되어 있는 것을 확인할 수 있습니다.
@@ -17,7 +38,7 @@ COLMAP 실행 후 노란색 형광펜으로 칠한 부분 (Automatic Reconstruct
 
 그 뒤, ```Workspace folder```에는 COLMAP을 돌린 뒤 결과물이 저장될 폴더의 경로를 입력하고, ```Image folder```에는 COLMAP에 넣을 input image들이 들어 있는 폴더의 경로를 입력합니다.
 
-이 때, input image의 경우 크기가 너무 크면 COLMAP이 돌아가는데 상당히 많은 시간이 소요되기 때문에 시간 단축을 위해 image의 크기를 1000x1000 이하로 줄이는 것을 추천드립니다. Image 크기를 줄이는 방법은 같이 있는 ```image_resize.py``` 파일에 imagepath와 savepath를 입력해서 실행을 하면 됩니다.
+이 때, input image의 경우 크기가 너무 크면 COLMAP이 돌아가는데 상당히 많은 시간이 소요되기 때문에 시간 단축을 위해 image의 크기를 1000x1000 이하로 줄이는 것을 추천드립니다. Image 크기를 줄이는 방법은 같이 있는 ```img_resize.py``` 파일에 imagepath와 savepath를 입력해서 실행을 하면 됩니다.
 
 ```python
 python img_resize.py
@@ -145,7 +166,7 @@ bash script/edit_background_removal.sh output/dataset 이름] config/object_remo
 모든 준비가 되었다면, training을 통해 point cloud를 생성하고 image들로 feature들을 뽑아서 rendering을 해야 합니다.
 
 ```
-bash script/train.sh [폴더 이름] 1
+bash script/train.sh [폴더 이름] [scale]
 ```
 
 Segmentation과 Training까지 끝나게 되면 output 폴더 아래에 다음과 같이 폴더가 구성됩니다.
