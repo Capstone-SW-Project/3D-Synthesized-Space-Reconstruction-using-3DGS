@@ -57,3 +57,5 @@ python demo/demo_automatic.py \
 # 2. copy gray mask to the correponding data path
 cp -r ./example/output_gaussian_dataset/${dataset_name}/Annotations ../data/${dataset_name}/object_mask
 cd ..
+
+python find_idx.py -d "$dataset_name"

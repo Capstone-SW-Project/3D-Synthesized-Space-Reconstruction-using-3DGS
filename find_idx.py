@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 import argparse
 import random
-import time
+from tqdm import tqdm
 
 def read_image(image_path):
     image = Image.open(image_path)
@@ -26,11 +26,17 @@ def create_index_overlay_image(image_array, output_path):
     except IOError:
         font = ImageFont.load_default()
     
-    index_colors = {index: (random.randint(50, 255), random.randint(50, 255), random.randint(50, 255))
-                    for index in unique_indices}
+    index_colors = {
+        index: (
+            random.randint(50, 255), 
+            random.randint(50, 255), 
+            random.randint(50, 255)
+        )
+        for index in unique_indices
+    }
     
     for index in unique_indices:
-        if index == 0:  # Skip background index
+        if index == 0:
             continue
         
         positions = np.argwhere(image_array == index)
@@ -47,41 +53,46 @@ def create_index_overlay_image(image_array, output_path):
         
         text_position = (x_min + 5, y_min + 5)
         text = str(index)
-        
         bbox = draw.textbbox((0, 0), text, font=font)
         text_width = bbox[2] - bbox[0]
         text_height = bbox[3] - bbox[1]
         
         # Index 값을 적을 text box를 bounding box 위에 생성
-        draw.rectangle([text_position, (text_position[0] + text_width + 4, text_position[1] + text_height + 4)],
-                       fill='black')
-        
+        draw.rectangle(
+            [
+                text_position, 
+                (text_position[0] + text_width + 4, text_position[1] + text_height + 4)
+            ],
+            fill='black',
+        )
         draw.text(text_position, text, fill="white", font=font)
     
     overlay_image.save(output_path)
-    print(f"Index overlay image saved: {output_path}")
 
 
 def process_images(folder_path, overlay_folder):
     os.makedirs(overlay_folder, exist_ok=True)
     
-    start_time = time.time()
     all_indices = set()
-    for filename in os.listdir(folder_path):
-        if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
-            image_path = os.path.join(folder_path, filename)
-            
-            image_array = read_image(image_path)
-            
-            indices = get_unique_indices(image_array)
-            all_indices.update(indices)
-            
-            overlay_output_path = os.path.join(overlay_folder, f"overlay_{filename}")
-            create_index_overlay_image(image_array, overlay_output_path)
     
-    end_time = time.time()
-    print("All unique indices found:", sorted(all_indices))
-    print(f"Total processing time: {end_time - start_time:.2f} seconds")
+    image_files = [
+        filename for filename in os.listdir(folder_path)
+        if filename.lower().endswith(('.png', '.jpg', '.jpeg'))
+    ]
+
+    if not image_files:
+        print("No image files found in the specified folder.")
+        return
+    
+    for filename in tqdm(image_files, desc="Processing overlay masks", unit="image"):
+        image_path = os.path.join(folder_path, filename)
+
+        image_array = read_image(image_path)
+        indices = get_unique_indices(image_array)
+        all_indices.update(indices)
+
+        overlay_output_path = os.path.join(overlay_folder, f"overlay_{filename}")
+        create_index_overlay_image(image_array, overlay_output_path)
 
 
 def main():
