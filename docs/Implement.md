@@ -12,8 +12,8 @@
 sh run_all.sh [folder_name] [scale] [removal_json_file]
 ```
 
+**run_all.sh**
 ```bash
-# run_all.sh
 #!/bin/bash
 
 if [ "$#" -ne 3 ]; then
@@ -27,9 +27,9 @@ REMOVAL_JSON_FILE="$3"
 
 # 1. Preprocess to make proper images for input (Optional)
 echo "Step 1: Preprocessing images..."
-# python make_img.py                    # Video 파일이 있는 경우
-# python img_resize.py                  # Image 크기가 너무 커서 COLMAP을 돌릴 때 시간이 오래 걸리는 경우
-# python convert.py -s [location]       # convert initial camera pose and point cloud with colmap
+# python make_img.py                        # Video 파일이 있는 경우
+# python img_resize.py                      # Image 크기가 너무 커서 COLMAP을 돌릴 때 시간이 오래 걸리는 경우
+# python convert.py -s "$FOLDER_NAME"       # convert initial camera pose and point cloud with colmap
 
 # 2. Make segmented images and find index of target objects
 echo "Step 2: Preparing pseudo labels..."
@@ -42,11 +42,12 @@ bash script/train.sh "$FOLDER_NAME" "$SCALE"
 # 4. Choose removal operation (object or background)
 echo "Step 4: Choosing removal operation..."
 # 객체 제거
-# bash script/edit_object_removal.sh "output/$DATASET_NAME" "config/object_removal/$REMOVAL_JSON_FILE"
+# bash script/edit_object_removal.sh "output/$FOLDER_NAME" "config/object_removal/$REMOVAL_JSON_FILE"
 # 배경 제거
 bash script/edit_background_removal.sh "output/$FOLDER_NAME" "config/object_removal/$REMOVAL_JSON_FILE"
 
 echo "All steps completed successfully."
+
 ```
 
 ---
