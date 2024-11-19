@@ -8,6 +8,9 @@
 꽤나 많은 과정이 있다보니 순서가 뒤바뀌거나 argument를 잘못 전달하는 등의 실수가 발생할 수 있어서 전체 과정 동안 실행시키는 bash 파일들을 하나로 묶어서 ```run_all.sh``` 파일만 실행시키면 preprocessing부터 object_removal이 한번에 진행되도록 파일을 만들었습니다.
 (COLMAP을 실행시키는 과정과 pointcloud 합성 과정은 local 환경에서 진행을 했기 때문에 이 파일에는 집어넣지 않았습니다.)
 
+```run_all.sh``` 파일을 실행시키기 전에 필요한 data는 input image, COLMAP 실행 후 생성 된 config, camera, point에 대한 bin 파일, database.db 파일이 있으면 실행이 됩니다.
+pointcloud 파일의 경우 ```train.sh``` 파일을 실행하면서 생성이 되기 때문에 위의 파일들만 input 폴더에 제대로 위치하고 있으면 실행이 됩니다.
+
 ```bash
 sh run_all.sh [folder_name] [scale] [removal_json_file]
 ```
@@ -52,7 +55,9 @@ echo "All steps completed successfully."
 
 ---
 
-## COLMAP
+## Detail
+
+### COLMAP
 
 COLMAP을 돌리기 이전에, Custom dataset이 동영상 파일인 경우 이를 frame 단위로 잘라서 image 파일 여러 장을 만들어 주어야 합니다. 이를 진행하는 파일이 ```make_img.py``` 파일이고, Video 파일 경로만 입력해준 뒤 실행을 하면 terminal에 이름을 입력하라고 뜨는데 여기에 생성된 image 파일들이 저장될 폴더의 이름을 넣어주면 ```output_frame/[입력한 폴더 이름]```의 구성으로 폴더가 생성되고 그 안에 image들이 저장되어 있는 것을 확인할 수 있습니다.
 
@@ -95,6 +100,8 @@ python img_resize.py
 여기까지 하게 되면 ```cameras.json```, ```cfg_args``` 파일들과 sparse 폴더 내에 ```cameras.bin```, ```images.bin```, ```points3D.bin``` 파일들이 생성 됩니다.
 이제 이 결과물들을 Gaussian Grouping을 세팅해 놓은 폴더에 복사를 해서 input으로 입력을 해주면 됩니다.
 
+---
+
 ## Gaussian Grouping
 
 Gaussian Grouping의 경우 논문의 저자가 Github에 적어 놓은 설명 그대로 진행을 하면 됩니다.
@@ -110,6 +117,8 @@ Gaussian Grouping의 경우 논문의 저자가 Github에 적어 놓은 설명 �
     |---<image 1>
     |---...
 ```
+
+---
 
 ### Segmentation
 
@@ -189,6 +198,7 @@ bash script/edit_background_removal.sh output/dataset 이름] config/object_remo
 |:--:|:--:|
 |![before](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/before.jpg)|![after](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/after.jpg)|
 
+---
 
 ### Training
 
@@ -230,7 +240,9 @@ Segmentation과 Training까지 끝나게 되면 output 폴더 아래에 다음�
 1. 객체나 배경을 지우고 싶다면 object_removal 과정을 진행
 2. rendering된 image를 3D space에 복원한 결과를 보고 싶다면 viewer를 이용하여 확인
 
-## CloudCompare
+---
+
+### CloudCompare
 
 [CloudCompare](https://www.danielgm.net/cc/)를 설치한 뒤 실행하고 원하는 2개의 point cloud (ply) 파일 [배경 / 객체]들을 가져옵니다.
 정상적으로 loading이 되었다면 point cloud를 조작해서 배경에서 원하는 위치로 객체를 위치시킵니다.
