@@ -44,10 +44,14 @@ Co-worker : 박현준, 임도현
 
 ### COLMAP
 
+#### # 1바퀴 촬영
 |한양대학교|혼천의|세종대왕|
 |:--:|:--:|:--:|
 |![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/COLMAP/hyu.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/COLMAP/clk.jpg)|![3](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/COLMAP/king.jpg)|
+
+#### # 2바퀴 이상 촬영
 |측우기|혼천의|사람|
+|:--:|:--:|:--:|
 |![4](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/COLMAP/rain.jpg)|![5](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/COLMAP/hon.jpg)|![6](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/COLMAP/dororo.jpg)|
 
 
@@ -104,9 +108,7 @@ Co-worker : 박현준, 임도현
 5. 크기가 큰 물체의 경우 드론을 이용하거나 최대한 전체적인 모습이 담길 수 있도록 촬영을 한다.
 6. 정확한 index 값을 config 파일에 넣는다 $\rightarrow$ **[find_idx.py](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/find_idx.py)로 직관적인 index 값 확인 가능**
 
----
-
-* 2바퀴 이상 촬영을 한 뒤 렌더링한 측우기의 모습
+#### # 2바퀴 이상 촬영을 한 뒤 렌더링한 측우기의 모습
 
 |좌|우|
 |:--:|:--:|
