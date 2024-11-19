@@ -66,7 +66,7 @@ Gaussian Grouping의 경우 논문의 저자가 Github에 적어 놓은 설명 �
 Segmentation을 해서 객체를 지정한 뒤 그 객체 또는 배경을 지워야 하는데, 위에서 ```prepare_pseudo_label.sh``` 파일로 segmentation 된 image들이 생성되었다면, 이 image들에서 원하는 객체에 대한 정보를 불러와야 합니다.
 
 ```bash
-bash script/prepare_pseudo_label.sh [data 폴더 이름] 1
+bash script/prepare_pseudo_label.sh [dataset 이름] [scale]
 ```
 
 코드를 실행하게 되면 ```data/[data 폴더 이름 (e.g., Apple)]```에 ```object_mask```라는 폴더가 생성되고 그 안에 input image와 동일한 개수의 흑백 image들이 생성되어 있는 것을 확인할 수 있습니다. 그 중 임의의 image를 다운 받아서 그림판으로 연 뒤, 스포이드로 원하는 객체를 찍고 색상 정보를 확인하면 R,G,B 값이 전부 동일한 것을 알 수 있습니다. 
@@ -95,6 +95,32 @@ Index 값들을 모두 찾았다면 그 값들을 Gaussian Grouping - config 폴
 > [실행 방법]
 > ```bash
 > python find_idx.py -d [dataset 이름]
+> ```
+>
+> 개별 파일을 실행하고자 한다면 위와 같이 실행을 하면 되고, 이 과정 역시 segmentation을 통해 객체 분리를 하기 위한 preprocessing 과정이기 때문에 위에서 실행했던 ```prepare_pseudo_label.sh``` 파일을 통해 object mask를 생성하고 그 뒤 index 값을 찾도록 설정해 주었습니다.
+>
+> ```bash
+> bash script/prepare_pseudo_label.sh [dataset 이름] [scale]
+> ```
+>
+> ```python
+> # prepare_pseudo_label.sh
+> python demo/demo_automatic.py \
+>   --chunk_size 4 \
+>   --img_path "$img_path" \
+>   --amp \
+>   --temporal_setting semionline \
+>   --size 480 \
+>   --output "./example/output_gaussian_dataset/${dataset_name}" \
+>   --use_short_id  \
+>   --suppress_small_objects  \
+>   --SAM_PRED_IOU_THRESHOLD 0.7 \
+>  
+> cp -r ./example/output_gaussian_dataset/${dataset_name}/Annotations ../data/${dataset_name}/object_mask
+> cd ..
+>
+> # 추가한 부분 (find_idx.py)
+> python find_idx.py -d "$dataset_name"
 > ```
 > 
 > |세종대왕|혼천의|측우기|
