@@ -15,8 +15,10 @@ pointcloud 파일의 경우 ```train.sh``` 파일을 실행하면서 생성이 �
 sh run_all.sh [folder_name] [scale] [removal_json_file]
 ```
 
-**run_all.sh**
+**[run_all.sh](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/run_all.sh)**
 ```bash
+## < run_all.sh > ##
+=================================================================================================================================
 #!/bin/bash
 
 if [ "$#" -ne 3 ]; then
