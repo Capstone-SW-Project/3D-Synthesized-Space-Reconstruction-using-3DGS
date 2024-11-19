@@ -18,7 +18,7 @@ sh run_all.sh [folder_name] [scale] [removal_json_file]
 **[run_all.sh](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/run_all.sh)**
 ```bash
 ## < run_all.sh > ##
-==============================================================================================================================
+==========================================================================================================================
 #!/bin/bash
 
 if [ "$#" -ne 3 ]; then
