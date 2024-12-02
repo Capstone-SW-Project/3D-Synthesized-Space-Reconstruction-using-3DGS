@@ -107,7 +107,21 @@ Co-worker : 박현준, 임도현
 4. 빛의 영향을 많이 받는 경우 Camera pose estimation의 정확도가 떨어지기 때문에 가급적 광원이 고정되어 있고, 균일하게 빛을 받는 상태에서 dataset을 수집한다.
 5. 크기가 큰 물체의 경우 드론을 이용하거나 최대한 전체적인 모습이 담길 수 있도록 촬영을 한다.
 6. 정확한 index 값을 config 파일에 넣는다 $\rightarrow$ **[find_idx.py](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/find_idx.py)로 직관적인 index 값 확인 가능**
+7. Pointcloud 파일에서 outlier들을 제거해서 artifact가 생기는 것을 최대한 방지한다.
 
+   a. KDTree Algorithm 사용
+   
+   |Before|After|
+   |:--:|:--:|
+   |![image](https://github.com/user-attachments/assets/54ca6ece-c462-4006-8347-05d2f4e38a9e)|![image](https://github.com/user-attachments/assets/128cf8a5-ec74-456a-a6a6-731db635f495)|
+
+   하지만, 이 방식의 경우 배경은 깨끗하게 지워지지만 객체에 해당하는 point들의 일부도 같이 지워진다는 문제점이 있었다.
+
+   |좌|우|
+   |:--:|:--:|
+   |![image](https://github.com/user-attachments/assets/62138e15-90c9-4442-b501-af07fa8f4bd2)|![image](https://github.com/user-attachments/assets/5ad5c46b-c328-4284-b055-aff490f8d1e9)|
+
+### Ablation study
 #### # 2바퀴 이상 촬영을 한 뒤 렌더링한 측우기의 모습
 
 |좌|우|
