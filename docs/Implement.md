@@ -69,7 +69,8 @@ COLMAP을 돌리기 이전에, Custom dataset이 동영상 파일인 경우 이�
 python make_img.py
 ```
 
-![colmap_impl](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/colmap_impl.png)
+<img src="https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/colmap_impl.png" width="700">
+
 COLMAP 실행 후 노란색 형광펜으로 칠한 부분 (Automatic Reconstruction)을 클릭하면 위와 같은 화면이 나옵니다.
 
 그 뒤, ```Workspace folder```에는 COLMAP을 돌린 뒤 결과물이 저장될 폴더의 경로를 입력하고, ```Image folder```에는 COLMAP에 넣을 input image들이 들어 있는 폴더의 경로를 입력합니다.
@@ -84,18 +85,18 @@ python img_resize.py
 
 다 끝나면 아까 지정했던 ```Workspace folder```에 결과물들이 저장 됩니다.
 
-![colmap_output](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/colmap_output.png)
+<img src="https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/colmap_output.png">
 
 > 한가지 더 중요한 내용은, 3DGS를 돌릴 때 ```SIMPLE PINHOLE``` 또는 ```PINHOLE``` 카메라로 세팅이 되어 있어야합니다.
 > ```scene/dataset_readers.py``` 파일에서 ```readColmapCameras``` 함수를 확인하면, model이 ```SIMPLE_PINHOLE``` 또는 ```PINHOLE```로 세팅이 되어 있는 것을 확인할 수 있습니다.
-> ![why_pinhole](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/why_pinhole.jpg)
+> <img src="https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/why_pinhole.jpg" width="800">
 > 따라서 COLMAP을 돌릴 때도 카메라 세팅을 해주어야 하고 이를 설정하기 위한 과정은 다음과 같습니다.
 > 이 때, reconstruction을 하기 전에 이 과정이 먼저 선행이 되어야 합니다.
 > 
 >1. File - New project - [database, images] 입력
 >2. Processing - Feature Extraction에서 ```SIMPLE PINHOLE``` 옵션을 선택하고 Extract를 클릭합니다. 제대로 바꼈는지 확인하고 싶다면 Processing - database management에 들어가서 카메라 옵션이 ```SIMPLE PINHOLE```로 바꼈는지 확인하면 됩니다.
 > 
-> ![pinhole](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/pinhole.png)
+> <img src="https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/pinhole.png" width="800">
 >
 >3. Auto reconstruction을 클릭한 뒤 ```database``` 파일 경로와 ```images``` 폴더 경로를 입력하고 reconstruction을 시작합니다.
 
@@ -134,7 +135,7 @@ bash script/prepare_pseudo_label.sh [dataset 이름] [scale]
 
 |Mask Image|Find Index|
 |:--:|:--:|
-|![mask](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/mask.png)|![index](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/index.png)|
+|<img src="https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/mask.png" width="600">|<img src="https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/index.png" width="1000">|
 
 이 값이 곧 segmentation을 했을 때 객체가 갖고 있는 index가 됩니다. 즉, 아래의 그림 처럼 Gaussian 들이 grouping을 한 후에 갖는 index 값을 의미합니다. 이 때 하나의 이미지에서 객체가 갖고 있는 index 값은 여러 개 일 수도 있기 때문에 모든 index 값을 찾아서 입력으로 넣어주어야 합니다.
 
@@ -186,7 +187,7 @@ Index 값들을 모두 찾았다면 그 값들을 Gaussian Grouping - config 폴
 > 
 > |세종대왕|혼천의|측우기|
 > |:--:|:--:|:--:|
-> |![1](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/data/sejong/overlay_mask/overlay_frame_0110.png)|![2](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/data/hon/overlay_mask/overlay_frame_0203.png)|![3](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/data/rain/overlay_mask/overlay_frame_0035.png)|
+> |<img src="https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/data/sejong/overlay_mask/overlay_frame_0110.png" width="600">|<img src="https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/data/hon/overlay_mask/overlay_frame_0203.png" width="800">|<img src="https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/data/rain/overlay_mask/overlay_frame_0035.png" width="600">|
 
 
 Object removal (Background removal)을 하기 위한 모든 전처리 과정을 끝마쳤다면, 마지막으로 아래의 파일을 실행시켜서 해당 index 부분을 제외한 나머지 부분들을 지워주면 됩니다.
@@ -253,11 +254,11 @@ Segmentation과 Training까지 끝나게 되면 output 폴더 아래에 다음�
 
 >아래의 그림에서 노란색/초록색으로 표현된 point들이 한양대, 빨간색으로 표현된 point들이 세종대왕 동상에 대한 point cloud 입니다.
 
-![synthesize](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/cloudcpr.png)
+<img src="https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/cloudcpr.png" width="800">
 
 그 다음으로 point cloud를 조작한 객체의 정보를 클릭한 뒤, property 창에서 제일 아래로 내려가면 어떤 행렬이 생성되게 됩니다.
 
-![matrix](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/matrix.png)
+<img src="https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/matrix.png" width="400">
 
 4x4 행렬이고, 1행1열부터 3행3열까지는 rotation, 4열은 translation에 대한 정보를 갖고 있습니다. 즉, 해당 객체를 초기 위치에서 얼마만큼 움직였는지에 대한 정보를 나타냅니다.
 
@@ -302,4 +303,4 @@ python composition_ply.py
 
 예시로, 한양대 사자상 앞에 광화문 세종대왕 동상 앞에 있는 혼천의 동상을 가져다 놓으면 아래와 같이 rendering이 됩니다.
 
-![final](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/final.png)
+<img src="https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/final.png" width="500">
