@@ -1,5 +1,5 @@
 # 🎓Capstone-SW-Project
-2024 졸업 프로젝트 - 3D Gaussian Splatting을을 이용한 3D Synthesized Space Reconstruction
+2024 졸업 프로젝트 - 3D Gaussian Splatting을 이용한 3D Synthesized Space Reconstruction
 
 Professor : 이성윤 교수님\
 Co-worker : 박현준, 임도현
