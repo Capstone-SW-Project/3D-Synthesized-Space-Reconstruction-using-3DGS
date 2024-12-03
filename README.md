@@ -120,6 +120,11 @@ Co-worker : 박현준, 임도현
    |<img src="https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/kdtree.png" width="2000"> | <img src="https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/dbscan.png" width="400"> |
    |이 방식의 경우 배경은 깨끗하게 지워지지만 객체에 해당하는 point들의 일부도 같이 지워진다는 문제점이 있었다.|DBSCAN (Density-Based Spatial Clustering) 방식을 사용하게 되면 밀도를 기준으로 clustering을 하기 때문에 배경을 제거한 point cloud 파일에 적용을 하게 되면 point의 밀도가 높은 객체 주변에 존재하는 point들이 살아남게 된다. KDTree algorithm을 사용했을때 보다 객체 위치에 존재하는 point들이 많이 보전된 것을 확인할 수 있다.|
 
+   |HDBSCAN|Mean Distance Threshold|
+   |:--:|:--:|
+   |<img src="https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/hdbscan.png" width="2500">|<img src="https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/meandist.png" width="2000">|
+   |HDBSCAN (Hierarchical DBSCAN)의 경우 point들이 고르게 분포해 있는 것이 아니라 특정 위치에 뭉쳐있는 모습을 확인할 수 있다. 그로 인해 quality가 떨어진다.|이 방식의 경우 서로 다른 point들 간의 거리를 구한 뒤 평균값을 구해서 이 값을 threshold로 설정한 뒤 threshold를 넘은 거리에 위치한 point를 버리는 방식이다. 이 방식도 좋은 성능을 보이지만, point들의 개수가 많아지면 그에 비례하게 연산량도 많아지기 때문에 DBSCAN algorithm이 가장 최적의 방식이라는 결론에 도달했다.|
+
 ### Ablation study
 #### # 2바퀴 이상 촬영을 한 뒤 렌더링한 측우기의 모습
 
