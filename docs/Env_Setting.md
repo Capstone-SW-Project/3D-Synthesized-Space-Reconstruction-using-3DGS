@@ -30,7 +30,7 @@ COLMAP의 경우 [Github](https://github.com/colmap/colmap/releases)에 들어�
 
 ### 실행 화면
 
-![colmap_exe](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/colmap_exe.png)
+<img src="https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/explain/colmap_exe.png" width="600">
 
 ## Gaussian Grouping
 
