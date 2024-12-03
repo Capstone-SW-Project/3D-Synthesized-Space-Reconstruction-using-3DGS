@@ -110,6 +110,11 @@ Co-worker : 박현준, 임도현
 7. Pointcloud 파일에서 outlier들을 제거해서 artifact가 생기는 것을 최대한 방지한다.
 
    >기존의 배경을 지운 pointcloud 파일을 cloudcompare로 확인을 해보면 객체 위에 존재하는 point들의 밀도가 상당히 높은 것을 확인할 수 있다. 하지만, 아래의 사진을 보면 객체 주변, 심지어는 객체와 멀리 떨어진 곳에도 불필요한 point들이 여럿 존재하는 것을 알 수 있다. 이 point들이 나중에 artifact의 원인이 될 수 있기 때문에 후처리로 완전히 제거되지 않은 point들을 지워주는 것이 보다 깔끔한 rendering이 될 것이다.
+   >
+   >**실행 방법**
+   >```bash
+   > python remove_artifact.py -d <dataset name> -p <ply file path>
+   >```
    
    <p align="center">
      <img src="https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/before.png" alt="before" width="700">
