@@ -96,7 +96,7 @@ Co-worker : 박현준, 임도현
 
 |Artifact 예시|정확한 객체 분리 예시|
 |:--:|:--:|
-|![1](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/same_index.jpg)|![2](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/rendering/remove_bg.png)|
+|<img src="https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/result/same_index.jpg" width="800">|<img src="https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/docs/img/rendering/remove_bg.png" width="600">|
 
 ---
 
@@ -108,8 +108,12 @@ Co-worker : 박현준, 임도현
 5. 크기가 큰 물체의 경우 드론을 이용하거나 최대한 전체적인 모습이 담길 수 있도록 촬영을 한다.
 6. 정확한 index 값을 config 파일에 넣는다 $\rightarrow$ **[find_idx.py](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/find_idx.py)로 직관적인 index 값 확인 가능**
 7. Pointcloud 파일에서 outlier들을 제거해서 artifact가 생기는 것을 최대한 방지한다.
+
+   기존의 배경을 지운 pointcloud 파일을 cloudcompare로 확인을 해보면 객체 위에 존재하는 point들의 밀도가 상당히 높은 것을 확인할 수 있다. 하지만, 아래의 사진을 보면 객체 주변, 심지어는 객체와 멀리 떨어진 곳에도 불필요한 point들이 여럿 존재하는 것을 알 수 있다. 이 point들이 나중에 artifact의 원인이 될 수 있기 때문에 후처리로 완전히 제거되지 않은 point들을 지워주는 것이 보다 깔끔한 rendering이 될 것이다.
    
-   ![before](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/before.png)
+   <p align="center">
+     <img src="https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/before.png" alt="before" width="700">
+   </p>
 
    |KDTree Algorithm|DBSCAN Algorithm|
    |:--:|:--:|
