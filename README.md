@@ -108,18 +108,13 @@ Co-worker : 박현준, 임도현
 5. 크기가 큰 물체의 경우 드론을 이용하거나 최대한 전체적인 모습이 담길 수 있도록 촬영을 한다.
 6. 정확한 index 값을 config 파일에 넣는다 $\rightarrow$ **[find_idx.py](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/find_idx.py)로 직관적인 index 값 확인 가능**
 7. Pointcloud 파일에서 outlier들을 제거해서 artifact가 생기는 것을 최대한 방지한다.
-
-   a. KDTree Algorithm 사용
    
-   |Before|After|
-   |:--:|:--:|
-   |![image](https://github.com/user-attachments/assets/54ca6ece-c462-4006-8347-05d2f4e38a9e)|![image](https://github.com/user-attachments/assets/128cf8a5-ec74-456a-a6a6-731db635f495)|
+   ![before](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/before.png)
 
-   하지만, 이 방식의 경우 배경은 깨끗하게 지워지지만 객체에 해당하는 point들의 일부도 같이 지워진다는 문제점이 있었다.
-
-   |좌|우|
+   |KDTree Algorithm|DBSCAN Algorithm|
    |:--:|:--:|
-   |![image](https://github.com/user-attachments/assets/62138e15-90c9-4442-b501-af07fa8f4bd2)|![image](https://github.com/user-attachments/assets/5ad5c46b-c328-4284-b055-aff490f8d1e9)|
+   |<img src="https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/kdtree.png" width="2000"> | <img src="https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/explain/dbscan.png" width="400"> |
+   |이 방식의 경우 배경은 깨끗하게 지워지지만 객체에 해당하는 point들의 일부도 같이 지워진다는 문제점이 있었다.|DBSCAN (Density-Based Spatial Clustering) 방식을 사용하게 되면 밀도를 기준으로 clustering을 하기 때문에 배경을 제거한 point cloud 파일에 적용을 하게 되면 point의 밀도가 높은 객체 주변에 존재하는 point들이 살아남게 된다. KDTree algorithm을 사용했을때 보다 객체 위치에 존재하는 point들이 많이 보전된 것을 확인할 수 있다.|
 
 ### Ablation study
 #### # 2바퀴 이상 촬영을 한 뒤 렌더링한 측우기의 모습
