@@ -113,7 +113,7 @@ Co-worker : 박현준, 임도현
    >
    >**실행 방법**
    >```bash
-   > python remove_artifact.py -d <dataset name> -p <ply file path>
+   > python remove_artifact.py -d <dataset name>
    >```
    
    <p align="center">
