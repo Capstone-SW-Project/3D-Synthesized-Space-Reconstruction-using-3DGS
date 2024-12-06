@@ -16,22 +16,22 @@ echo "Step 1: Preprocessing images..."
 # python convert.py -s "$FOLDER_NAME"       # convert initial camera pose and point cloud with colmap
 
 # 2. Make segmented images and find index of target objects
-echo "Step 2: Preparing pseudo labels..."
+echo "\nStep 2: Preparing pseudo labels..."
 bash script/prepare_pseudo_label.sh "$FOLDER_NAME" "$SCALE"
 
 # 3. Train
-echo "Step 3: Training the model..."
+echo "\nStep 3: Training the model..."
 bash script/train.sh "$FOLDER_NAME" "$SCALE"
 
 # 4. Choose removal operation (object or background)
-echo "Step 4: Choosing removal operation..."
+echo "\nStep 4: Choosing removal operation..."
 # 객체 제거
 # bash script/edit_object_removal.sh "output/$FOLDER_NAME" "config/object_removal/$REMOVAL_JSON_FILE"
 # 배경 제거
 bash script/edit_background_removal.sh "output/$FOLDER_NAME" "config/object_removal/$REMOVAL_JSON_FILE"
 
 # 5. Remove artifacts in pointcloud file which background (object) is removed by step 4
-echo "Step 5: Removing artifacts..."
-# bash script/edit_artifact.sh "$FOLDER_NAME"
+echo "\nStep 5: Removing artifacts..."
+bash script/edit_artifact.sh "$FOLDER_NAME"
 
 echo "\nAll steps completed successfully."
