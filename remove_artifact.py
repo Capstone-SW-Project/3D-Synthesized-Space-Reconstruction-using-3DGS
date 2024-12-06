@@ -71,6 +71,7 @@ def calc_point(points, eps=0.05, min_samples=10):
 #     filtered_points = points[labels != -1]
 #     return filtered_points
 
+# <mean distance>
 # def knn_remover(points, k=10, threshold_multiplier=2.0):
 #     nbrs = NearestNeighbors(n_neighbors=k+1, algorithm='auto').fit(points[:, :3])
 #     distances, _ = nbrs.kneighbors(points[:, :3])
@@ -85,14 +86,16 @@ def calc_point(points, eps=0.05, min_samples=10):
 def main():
     parser = argparse.ArgumentParser(description="Remove artifacts from a point cloud.")
     parser.add_argument('-d', '--dataset', type=str, required=True, help='Dataset name')
-    parser.add_argument('-p', '--pointcloud', type=str, required=True, help='Path to point cloud file')
     args = parser.parse_args()
 
-    dataset_name = args.dataset
-    folder_path = f'output/{dataset_name}/filtered_point_cloud'
+    dataset_path = args.dataset
+    folder_path = f'output/{dataset_path}/filtered_point_cloud'
     os.makedirs(folder_path, exist_ok=True)
 
-    header, points = read_ply(args.pointcloud)
+    dataset_name = os.path.basename(dataset_path)
+    ply_file_path = f"output/{dataset_name}/point_cloud_object_decompose/iteration_30000/point_cloud.ply"
+    
+    header, points = read_ply(ply_file_path)
 
     filtered_points = calc_point(points)
     

@@ -30,4 +30,8 @@ echo "Step 4: Choosing removal operation..."
 # 배경 제거
 bash script/edit_background_removal.sh "output/$FOLDER_NAME" "config/object_removal/$REMOVAL_JSON_FILE"
 
-echo "All steps completed successfully."
+# 5. Remove artifacts in pointcloud file which background (object) is removed by step 4
+echo "Step 5: Removing artifacts..."
+# bash script/edit_artifact.sh "$FOLDER_NAME"
+
+echo "\nAll steps completed successfully."
