@@ -11,6 +11,10 @@
 ```run_all.sh``` 파일을 실행시키기 전에 필요한 data는 input image, COLMAP 실행 후 생성 된 config, camera, point에 대한 bin 파일, database.db 파일이 있으면 실행이 됩니다.
 pointcloud 파일의 경우 ```train.sh``` 파일을 실행하면서 생성이 되기 때문에 위의 파일들만 input 폴더에 제대로 위치하고 있으면 실행이 됩니다.
 
+>**주의할 점**
+>
+>객체 또는 배경을 지우기 이전에 json 파일에 index 값이 들어가 있어야 모든 step이 원하는 대로 동작 합니다. 따라서 run_all.sh 파일을 실행하기 전에 step 1,2를 따로 먼저 실행해서 index 값을 확인한 뒤 json 파일에 넣고 다시 실행하는 것을 추천드립니다.
+
 ```bash
 sh run_all.sh [folder_name] [scale] [removal_json_file]
 ```
@@ -37,22 +41,25 @@ echo "Step 1: Preprocessing images..."
 # python convert.py -s "$FOLDER_NAME"       # convert initial camera pose and point cloud with colmap
 
 # 2. Make segmented images and find index of target objects
-echo "Step 2: Preparing pseudo labels..."
+echo "\nStep 2: Preparing pseudo labels..."
 bash script/prepare_pseudo_label.sh "$FOLDER_NAME" "$SCALE"
 
 # 3. Train
-echo "Step 3: Training the model..."
+echo "\nStep 3: Training the model..."
 bash script/train.sh "$FOLDER_NAME" "$SCALE"
 
 # 4. Choose removal operation (object or background)
-echo "Step 4: Choosing removal operation..."
+echo "\nStep 4: Choosing removal operation..."
 # 객체 제거
 # bash script/edit_object_removal.sh "output/$FOLDER_NAME" "config/object_removal/$REMOVAL_JSON_FILE"
 # 배경 제거
 bash script/edit_background_removal.sh "output/$FOLDER_NAME" "config/object_removal/$REMOVAL_JSON_FILE"
 
-echo "All steps completed successfully."
+# 5. Remove artifacts in pointcloud file which background (object) is removed by step 4
+echo "\nStep 5: Removing artifacts..."
+bash script/edit_artifact.sh "$FOLDER_NAME"
 
+echo "\nAll steps completed successfully."
 ```
 
 ---
