@@ -22,7 +22,7 @@ Co-worker : 박현준, 임도현
 
 한 가지 예시로, Gaussian Grouping에서 제공하는 lerf-mask dataset으로 3DGS를 학습시킨 뒤 렌더링한 결과를 viewer를 통해 확인해보면 다음과 같은 결과를 확인할 수 있습니다.
 
-![3DGS](https://github.com/Capstone-SW-Project/3D-Gaussian/blob/main/img/rendering/3DGS.gif)
+![3DGS](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/docs/img/rendering/3DGS.gif)
 
 이번 프로젝트에서는 기존에 존재하는 dataset들이 아닌, 저희가 직접 촬영한 동영상을 특정 frame 단위로 잘라 이미지로 변환하여 custom dataset을 만든 뒤, 이를 학습시켜서 렌더링한 결과를 이용하여 객체를 합성하는 task를 진행하려고 합니다.
 
