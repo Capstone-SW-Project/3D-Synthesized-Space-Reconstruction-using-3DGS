@@ -1,5 +1,6 @@
-name: Gaussian-Grouping
+name: Gaussian_Grouping
 channels:
+  - conda-forge
   - defaults
   - pytorch
 dependencies:
@@ -8,13 +9,30 @@ dependencies:
   - torchvision=0.13.1
   - torchaudio=0.12.1
   - cudatoolkit=11.3
-  - plyfile=0.8.1
+  - cudatoolkit-dev=11.7
   - tqdm
   - scipy
-  - wandb
-  - opencv-python
   - scikit-learn
-  - lpips
+  - git
+  - pip
   - pip:
+      - plyfile==0.8.1
+      - wandb
+      - opencv-python
+      - lpips
       - submodules/diff-gaussian-rasterization
       - submodules/simple-knn
+      - segment_anything
+      - GroundingDINO
+      
+# post-build commands
+post_build:
+  - pip install -e .
+  - bash scripts/download_models.sh
+  - git clone https://github.com/hkchengrex/Grounded-Segment-Anything.git
+  - cd Grounded-Segment-Anything
+  - export AM_I_DOCKER=False
+  - export BUILD_WITH_CUDA=True
+  - python -m pip install -e segment_anything
+  - python -m pip install -e GroundingDINO
+  - cd ../..
