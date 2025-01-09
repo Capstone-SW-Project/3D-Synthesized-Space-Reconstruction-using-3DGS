@@ -64,6 +64,22 @@ pip install submodules/diff-gaussian-rasterization
 pip install submodules/simple-knn
 ```
 
+Option이긴 한데 own dataset에 mask를 얻고 싶다면 DEVA 환경도 구축하면 된다고 합니다.
+```bash
+cd Tracking-Anything-with-DEVA
+pip install -e .
+bash scripts/download_models.sh     # Download the pretrained models
+
+git clone https://github.com/hkchengrex/Grounded-Segment-Anything.git
+cd Grounded-Segment-Anything
+export AM_I_DOCKER=False
+export BUILD_WITH_CUDA=True
+python -m pip install -e segment_anything
+python -m pip install -e GroundingDINO
+
+cd ../..
+```
+
 ## Gaussian Splatting Viewer
 
 Gaussian Splatting을 돌린 뒤 결과물을 육안으로 확인하기 위해서는 전용 viewer가 필요합니다. Linux 환경에서 설치를 해도 되지만, window에 설치하는 것을 추천드립니다.
