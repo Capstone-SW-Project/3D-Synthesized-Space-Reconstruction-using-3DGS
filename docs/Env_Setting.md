@@ -43,41 +43,22 @@ COLMAP의 경우 [Github](https://github.com/colmap/colmap/releases)에 들어�
 
 ### Installation
 
-Gaussian Grouping을 clone 해옵니다.
+먼저 repository를 clone해옵니다.
+용량때문에 lama와 DEVA는 repository에 구성되어 있지 않아서 gaussian grouping도 clone 해와야 합니다.
 
 ```
 git clone https://github.com/lkeab/gaussian-grouping.git
 cd gaussian-grouping
 ```
 
-Anaconda 가상환경을 만들고 필수 설치파일들을 설치해줍니다.
+그 다음 gaussian grouping에서 필요한 파일만 이 repository의 위치로 복사를 해놓은 뒤 환경 설정을 하면 됩니다.
+
+이번 프로젝트는 GPU가 필수적이기 때문에 CUDA가 설치되어 있어야 합니다.
+따라서 LINUX 환경에 Conda 가상환경을 구성하고 그 위에 CUDA와 여러 library들을 설치하는 것이 권장됩니다.
+이를 위해 [environment.yml](https://github.com/Capstone-SW-Project/3D-Synthesized-Space-Reconstruction-using-3DGS/blob/main/environment.yml) 파일을 만들어 환경설정을 할 수 있도록 구현해 놓았고 아래 명령어를 통해 설치하시면 됩니다.
 
 ```bash
-conda create -n gaussian_grouping python=3.8 -y
-conda activate gaussian_grouping 
-
-conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
-pip install plyfile==0.8.1
-pip install tqdm scipy wandb opencv-python scikit-learn lpips
-
-pip install submodules/diff-gaussian-rasterization
-pip install submodules/simple-knn
-```
-
-Option이긴 한데 own dataset에 mask를 얻고 싶다면 DEVA 환경도 구축하면 된다고 합니다.
-```bash
-cd Tracking-Anything-with-DEVA
-pip install -e .
-bash scripts/download_models.sh     # Download the pretrained models
-
-git clone https://github.com/hkchengrex/Grounded-Segment-Anything.git
-cd Grounded-Segment-Anything
-export AM_I_DOCKER=False
-export BUILD_WITH_CUDA=True
-python -m pip install -e segment_anything
-python -m pip install -e GroundingDINO
-
-cd ../..
+conda create -f environment.yml
 ```
 
 ## Gaussian Splatting Viewer
